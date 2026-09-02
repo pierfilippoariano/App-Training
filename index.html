@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Hell Week</title>
+
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hell Week">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  html, body { margin:0; padding:0; background:#0A0A0A; -webkit-font-smoothing:antialiased; overscroll-behavior-y:none; }
+  #root { padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom); }
+  button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  * { -webkit-user-select:none; user-select:none; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script>
+(() => {
+  // app.jsx
+  if (!window.storage) {
+    window.storage = {
+      async get(key) {
+        const v = localStorage.getItem(key);
+        if (v === null) throw new Error("not found");
+        return { key, value: v };
+      },
+      async set(key, value) {
+        localStorage.setItem(key, value);
+        return { key, value };
+      },
+      async delete(key) {
+        localStorage.removeItem(key);
+        return { key, deleted: true };
+      },
+      async list(prefix = "") {
+        const keys = Object.keys(localStorage).filter((k) => k.startsWith(prefix));
+        return { keys, prefix };
+      }
+    };
+  }
+  var { useState, useEffect, useRef, useCallback } = React;
+  var BG = "#0A0A0A";
+  var SURFACE = "#141414";
+  var SURFACE_2 = "#1C1C1C";
+  var VOLT = "#CCFF00";
+  var WHITE = "#FFFFFF";
+  var MUTED = "#737373";
+  var DIM = "#404040";
+  var ORANGE = "#FF6B00";
+  var RED = "#FF3B30";
+  var DISPLAY = "'Bebas Neue', sans-serif";
+  var BODY = "'Inter', sans-serif";
+  var G = {
+    "panca-piana": { s: "Panca piana, scapole retratte, piedi piantati a terra, presa prona poco pi\xF9 larga delle spalle.", p: ["Stacca il bilanciere sopra le spalle", "Scendi controllato fino a toccare il petto", "Pausa 1 sec sul petto", "Spingi verso l'alto in modo esplosivo"], m: "Glutei che si staccano. Resta incollato con testa, schiena alta e glutei." },
+    "panca-incl": { s: "Panca inclinata a 30-45\xB0, manubri all'altezza del petto, palmi in avanti.", p: ["Spingi i manubri verso l'alto ad arco", "In cima si avvicinano senza toccarsi", "Scendi in 3 sec fino allo stretch sul petto alto", "Pausa 1 sec in basso"], m: "Inclinazione oltre 60\xB0: diventa un esercizio per le spalle." },
+    "panca-man": { s: "Panca piana, manubri ai lati del petto, palmi in avanti.", p: ["Spingi verso l'alto seguendo un arco", "I manubri si avvicinano in cima", "Scendi controllato sentendo lo stretch", "Range pi\xF9 ampio del bilanciere"], m: "Movimento a binari verticali. Serve l'arco." },
+    "croci": { s: "Panca piana, manubri leggeri, gomiti quasi distesi e fissi.", p: ["Parti coi manubri sopra il petto, palmi che si guardano", "Apri le braccia ad arco fino allo stretch", "Gomiti fissi per tutto il movimento", "Chiudi contraendo il petto"], m: "Piegare i gomiti per caricare di pi\xF9. Diventa una panca fatta male." },
+    "croci-incl": { s: "Panca inclinata 30\xB0, manubri leggeri, gomiti quasi distesi.", p: ["Parti sopra il petto alto", "Apri ad arco fino allo stretch", "Contrai il petto per chiudere", "Pausa 1 sec in alto"], m: "Andare troppo in basso con le spalle. Fermati dove senti tensione, non dolore." },
+    "pushup": { s: "A terra, mani larghezza spalle, corpo in linea retta.", p: ["Addome contratto, glutei stretti", "Scendi finch\xE9 il petto sfiora terra", "Pausa 1 sec in basso", "Spingi verso l'alto"], m: "Bacino che cede. Il corpo resta una tavola." },
+    "pushup-decl": { s: "Piedi su una panca, mani a terra larghezza spalle.", p: ["Corpo rigido, addome contratto", "Scendi con i gomiti a 45\xB0", "Petto verso terra, pausa 1 sec", "Spingi verso l'alto"], m: "Bacino che cede. Se non tieni la linea, togli il rialzo." },
+    "pullup": { s: "Sbarra, presa prona (palmi in avanti) pi\xF9 larga delle spalle, braccia distese.", p: ["Parti da appeso, scapole attive (spalle gi\xF9, non alle orecchie)", "Tira portando il mento sopra la sbarra", "Pausa 1 sec in alto contraendo i dorsali", "Scendi controllato in 3 sec fino a braccia distese"], m: "Oscillare col corpo per prendere slancio. Se non arrivi alle rep, usa un elastico o fai solo le negative da 5 sec." },
+    "pullover": { s: "Sdraiato su panca, manubrio a due mani sopra il petto.", p: ["Braccia leggermente flesse e fisse", "Porta il manubrio dietro la testa ad arco", "Stretch profondo su petto e dorsale", "Risali contraendo"], m: "Piegare troppo i gomiti. Diventa un'estensione tricipiti." },
+    "curl-bil": { s: "In piedi, bilanciere presa supina larghezza spalle, gomiti ai fianchi.", p: ["Sali contraendo, gomiti FERMI ai fianchi", "Pausa 1 sec sulla contrazione", "Scendi in 2-3 sec controllato", "Estensione completa in basso"], m: "Slanciare col busto. Se lanci il peso, il carico \xE8 troppo alto." },
+    "curl-man": { s: "In piedi, manubri ai lati, presa supina, gomiti ai fianchi.", p: ["Sali con entrambe le braccia insieme", "Pausa 1 sec sulla contrazione", "Scendi in 2-3 sec", "Estensione completa in basso"], m: "Oscillare il busto. La schiena resta ferma." },
+    "curl-alt": { s: "In piedi, manubri ai lati, presa neutra.", p: ["Sali con un braccio ruotando in supinazione", "Pausa 1 sec sul picco", "Scendi in 2 sec ruotando indietro", "Alterna destro e sinistro"], m: "Supinare troppo presto. La rotazione accompagna la salita." },
+    "curl-incl": { s: "Seduto su panca inclinata 45\xB0, braccia che pendono, manubri ai lati.", p: ["Sali contraendo i bicipiti", "Pausa 1 sec in alto", "Scendi in 3 sec al massimo allungamento", "Stretch profondo a fine discesa"], m: "Sollevare le spalle dalla panca. Scapole appoggiate." },
+    "hammer": { s: "In piedi, manubri ai lati, presa neutra (palmi verso il corpo).", p: ["Sali mantenendo la presa neutra", "Pausa 1 sec in alto", "Scendi in 2-3 sec", "Nessuna rotazione del polso"], m: "Ruotare il polso a met\xE0 rep. La presa resta a martello." },
+    "preacher": { s: "Panca Scott, gomiti sul cuscinetto, presa supina sull'EZ.", p: ["Parti con braccia quasi distese", "Sali contraendo", "Pausa 1 sec sulla contrazione", "Scendi in 3 sec controllato"], m: "Rimbalzare in basso. Fermati prima dell'iperestensione." },
+    "conc": { s: "Seduto, gomito appoggiato all'interno coscia, manubrio in mano.", p: ["Braccio disteso, palmo in avanti", "Sali, gomito FERMO sulla coscia", "Pausa 1 sec sul picco", "Scendi in 2-3 sec"], m: "Gomito che si stacca dalla coscia. \xC8 il punto fisso." },
+    "curl-panca": { s: "Seduto sul bordo panca, manubri ai lati, schiena dritta.", p: ["Sali con entrambe le braccia, gomiti ai fianchi", "Da seduto lo slancio \xE8 impossibile", "Pausa 1 sec sul picco", "Scendi in 3 sec"], m: "Inclinarsi indietro. Schiena verticale." },
+    "close-grip": { s: "Sdraiato su panca, bilanciere presa prona larghezza spalle.", p: ["Stacca sopra il petto", "Scendi coi gomiti aderenti al busto", "Pausa 1 sec sul petto", "Spingi estendendo i tricipiti"], m: "Allargare i gomiti. Qui restano stretti al corpo." },
+    "skull": { s: "Sdraiato su panca, EZ presa prona, bilanciere sopra il petto.", p: ["Gomiti FERMI puntati al soffitto", "Abbassa verso la fronte in 3 sec", "Pausa 1 sec a pochi cm dalla fronte", "Estendi i tricipiti"], m: "Gomiti che si aprono o avanzano. Se si muovono, i tricipiti smettono di lavorare." },
+    "skull-man": { s: "Sdraiato su panca, manubri sopra il petto, presa neutra.", p: ["Abbassa i manubri ai lati della testa in 3 sec", "Gomiti fermi puntati al soffitto", "Pausa 1 sec al massimo stretch", "Estendi per risalire"], m: "Gomiti che si allargano. La presa neutra d\xE0 pi\xF9 range: sfruttalo senza aprire." },
+    "french-ez": { s: "Seduto o in piedi, EZ sopra la testa, presa prona larghezza spalle.", p: ["Abbassa dietro la testa in 3 sec", "Gomiti puntati in alto e vicini alla testa", "Scendi fino al massimo stretch comodo", "Estendi i tricipiti"], m: "Allargare i gomiti come ali. Restano paralleli e stretti." },
+    "ohe-man": { s: "Seduto, manubrio a due mani sopra la testa, braccia distese.", p: ["Abbassa dietro la testa in 3 sec", "Stretch profondo sul tricipite", "Estendi coi gomiti puntati in alto", "Gomiti stretti"], m: "Allargare i gomiti. Restano paralleli per caricare il capo lungo." },
+    "kickback": { s: "Busto parallelo al pavimento su panca, gomito alto.", p: ["Gomito FISSO all'altezza del busto", "Estendi solo l'avambraccio indietro", "Pausa 1 sec sulla contrazione", "Torna a 90\xB0 controllato"], m: "Gomito che si abbassa. Si muove solo l'avambraccio." },
+    "diamond": { s: "A terra, mani vicine sotto il petto a formare un diamante.", p: ["Corpo rigido, addome contratto", "Scendi coi gomiti stretti al busto", "Petto verso le mani, pausa 1 sec", "Spingi verso l'alto"], m: "Gomiti che si aprono ai lati. Restano stretti." },
+    "floor-press": { s: "Sdraiato a TERRA, bilanciere o manubri, presa stretta.", p: ["Scendi finch\xE9 i tricipiti toccano il pavimento", "Pausa 1 sec col gomito a terra", "Spingi verso l'alto", "Gomiti stretti al busto"], m: "Rimbalzare i gomiti a terra. Pausa controllata, poi spingi." },
+    "hlr": { s: "Appeso alla sbarra, presa prona larghezza spalle, corpo rilassato.", p: ["Solleva le gambe DRITTE contraendo l'addome", "Sali fino a far arrotolare il bacino", "Pausa 1 sec in alto", "Scendi in 2 sec senza oscillare"], m: "Fermarsi a 90\xB0. Senza arrotolamento del bacino lavora solo l'anca." },
+    "hkr": { s: "Appeso alla sbarra, presa prona, ginocchia flesse.", p: ["Porta le ginocchia verso il petto", "Il bacino si arrotola in alto alla fine", "Pausa 1 sec", "Scendi in 2 sec controllato"], m: "Oscillare per prendere slancio. Se oscilli, riduci le rep." },
+    "crunch-zav": { s: "Sdraiato a terra, ginocchia flesse, disco sul petto.", p: ["Arrotola il busto sollevando le scapole", "Movimento corto: non \xE8 un sit-up", "Pausa 1 sec sulla contrazione", "Scendi in 3 sec senza appoggiare del tutto"], m: "Tirare il collo. Le mani tengono solo il disco." },
+    "rev-crunch": { s: "Sdraiato, gambe flesse a 90\xB0, mani sotto il sedere.", p: ["Stringi un disco tra i piedi", "Stacca il bacino portando le ginocchia al petto", "Pausa 1 sec sulla contrazione", "Scendi in 2-3 sec vertebra per vertebra"], m: "Slancio delle gambe. Il movimento arrotola il bacino." },
+    "situp-decl": { s: "Panca declinata, piedi bloccati, disco al petto.", p: ["Scendi controllato in 3 sec", "Fermati prima di appoggiare la schiena", "Risali arrotolando il busto", "Pausa 1 sec in alto"], m: "Lanciarsi con le braccia. Il movimento parte dall'addome." },
+    "russian": { s: "Seduto, busto a 45\xB0, piedi sollevati, disco tra le mani.", p: ["Ruota il busto a destra portando il disco verso terra", "Torna al centro e ruota a sinistra", "Ruota il torace, non le braccia", "Piedi sempre sollevati"], m: "Muovere solo le braccia. \xC8 il torace che ruota." },
+    "plank": { s: "Sui gomiti, gomiti sotto le spalle, corpo in linea retta.", p: ["Addome contratto, glutei stretti", "Bacino n\xE9 alto n\xE9 basso", "Collo neutro, sguardo a terra", "Respira normalmente"], m: "Bacino che si alza per riposare. Se cedi, fermati." },
+    "side-plank": { s: "Plank laterale, gomito sotto la spalla, piedi sovrapposti.", p: ["Solleva il bacino, corpo rigido", "Anca alta per tutta la durata", "Spalla d'appoggio stabile", "Cambia lato"], m: "Anca che scende. Se cedi, appoggia il ginocchio." },
+    "bicycle": { s: "Sdraiato, mani dietro la testa appoggiate, piedi sollevati.", p: ["Gomito destro verso ginocchio sinistro", "Estendi contemporaneamente l'altra gamba", "Alterna fluido e controllato", "Spalle sempre staccate da terra"], m: "Tirare il collo e andare veloce. Movimento lento." },
+    "vups": { s: "Sdraiato, gambe distese, braccia sopra la testa.", p: ["Solleva busto e gambe insieme fino a toccare i piedi", "Forma una V col corpo", "Pausa 1 sec in alto", "Scendi senza toccare terra"], m: "Piegare le ginocchia. Le gambe restano dritte." },
+    "ab-wheel": { s: "In ginocchio, mani sulla ruota, schiena neutra.", p: ["Spingi in avanti tenendo la schiena dritta", "Vai il pi\xF9 lontano possibile senza cedere in lombare", "Tira indietro contraendo l'addome", "Discesa controllata in 3 sec"], m: "Lombare che si inarca. Se la schiena cede, riduci il range." }
+  };
+  var days = [
+    {
+      id: 1,
+      label: "D1",
+      title: "BRACCIA HEAVY",
+      sub: "Bicipiti + tricipiti carico pieno",
+      area: "ARMS",
+      dur: 45,
+      int: 1,
+      blocks: [
+        { i: "\u{1F4AA}", n: "BICIPITI", ex: [
+          { name: "Curl bilanciere", sets: 4, reps: "10", load: "27,5 kg", rest: "75 sec", tempo: "2-1-2-0", note: "Base assoluta. Gomiti fermi ai fianchi, zero slancio", a: 1, g: "curl-bil" },
+          { name: "Curl inclinato manubri", sets: 3, reps: "12", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Panca 45\xB0, eccentrica 3 sec. Massimo stretch del capo lungo", a: 1, g: "curl-incl" },
+          { name: "Hammer curl", sets: 3, reps: "12", load: "12 kg cad.", rest: "60 sec", tempo: "2-0-2-0", note: "Presa neutra. Brachiale = spessore del braccio", a: 1, g: "hammer" }
+        ] },
+        { i: "\u{1F4AA}", n: "TRICIPITI", ex: [
+          { name: "Panca stretta", sets: 4, reps: "10", load: "22 kg/lato", rest: "75 sec", tempo: "3-1-1-0", note: "Compound base. Gomiti stretti al busto", a: 1, g: "close-grip" },
+          { name: "French press EZ", sets: 3, reps: "12", load: "15 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Sopra la testa, stretch del capo lungo", a: 1, g: "french-ez" },
+          { name: "Skull crusher EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Gomiti fermi puntati al soffitto", a: 1, g: "skull" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Bacino che si arrotola alla fine", v: 1, g: "hlr" },
+          { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-2-0", note: "Carico alto, alte rep", v: 1, g: "crunch-zav" }
+        ] },
+        { t: "info", i: "\u26A0\uFE0F", n: "ACHILLE", note: "Protocollo terapeutico fuori dall'allenamento \u2014 vedi card in fondo" }
+      ]
+    },
+    {
+      id: 2,
+      label: "D2",
+      title: "PETTO + PULL UP",
+      sub: "Spinta pesante + dorsali",
+      area: "CHEST + BACK",
+      dur: 45,
+      int: 1,
+      blocks: [
+        { i: "\u{1F3CB}\uFE0F", n: "PETTO", ex: [
+          { name: "Panca piana bilanciere", sets: 4, reps: "8", load: "25 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Esercizio principale. Pausa 1 sec sul petto", g: "panca-piana" },
+          { name: "Panca inclinata manubri", sets: 3, reps: "10", load: "22 kg cad.", rest: "75 sec", tempo: "3-1-1-0", note: "Parte alta del petto, range completo", g: "panca-incl" },
+          { name: "Croci manubri", sets: 3, reps: "15", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Alte rep, stretch profondo. Qui arriva il pump", g: "croci" }
+        ] },
+        { i: "\u{1F519}", n: "DORSALI", ex: [
+          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Larghezza della schiena. Presa larga, mento sopra la sbarra, discesa 3 sec. Se non arrivi a 6 rep usa un elastico", g: "pullup" },
+          { name: "Pullover manubrio", sets: 3, reps: "15", load: "22 kg", rest: "60 sec", tempo: "3-0-1-0", note: "Arco dietro la testa. Dorsale + espansione della gabbia toracica", g: "pullover" }
+        ] },
+        { i: "\u{1F4AA}", n: "BRACCIA PUMP", ss: "\u26A1 SUPERSET \u2014 Curl seduto \u2192 French press senza pausa, poi 60 sec", ex: [
+          { name: "Curl seduto su panca", sets: 3, reps: "15", load: "10 kg cad.", rest: "\u2014", tempo: "2-1-2-0", note: "Da seduto lo slancio \xE8 impossibile", a: 1, ss: 1, g: "curl-panca" },
+          { name: "French press EZ", sets: 3, reps: "15", load: "12 kg EZ", rest: "60 sec", tempo: "2-0-2-0", note: "Pump leggero, chiude il superset", a: 1, ss: 1, g: "french-ez" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo, eccentrica 3 sec", v: 1, g: "situp-decl" },
+          { name: "Reverse crunch zavorrato", sets: 3, reps: "20", load: "8 kg tra i piedi", rest: "45 sec", tempo: "2-0-2-0", note: "Addome basso, alte rep", v: 1, g: "rev-crunch" }
+        ] }
+      ]
+    },
+    {
+      id: 3,
+      label: "D3",
+      title: "V DAY + PUMP",
+      sub: "Addome brutale \xB7 braccia leggere",
+      area: "V CORE",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F53B}", n: "BLOCCO A \u2014 ADDOME BASSO", ex: [
+          { name: "Hanging leg raise", sets: 4, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Le ultime serie devono bruciare", v: 1, g: "hlr" },
+          { name: "Reverse crunch zavorrato", sets: 4, reps: "20", load: "10 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Bacino che si stacca a ogni rep", v: 1, g: "rev-crunch" },
+          { name: "Hanging knee raise", sets: 3, reps: "20", load: "BW", rest: "40 sec", tempo: "2-0-2-0", note: "Alte rep di chiusura sul blocco basso", v: 1, g: "hkr" }
+        ] },
+        { i: "\u{1F53B}", n: "BLOCCO B \u2014 RETTO + OBLIQUI", ex: [
+          { name: "Crunch zavorrato", sets: 4, reps: "20", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-2-0", note: "Qui si costruisce lo spessore dell'addome", v: 1, g: "crunch-zav" },
+          { name: "Russian twist zavorrato", sets: 3, reps: "20/lato", load: "disco 12,5 kg", rest: "45 sec", tempo: "2-0-2-0", note: "Obliqui, piedi sollevati", v: 1, g: "russian" },
+          { name: "Bicycle crunch", sets: 3, reps: "25/lato", load: "BW", rest: "40 sec", tempo: "controllato", note: "Movimento lento e controllato", v: 1, g: "bicycle" }
+        ] },
+        { i: "\u{1F4AA}", n: "BRACCIA PUMP LEGGERO", ss: "\u26A1 SUPERSET \u2014 Curl manubri \u2192 Skull crusher manubri, poi 45 sec", ex: [
+          { name: "Curl manubri", sets: 3, reps: "20", load: "8 kg cad.", rest: "\u2014", tempo: "2-0-2-0", note: "Carico leggero, 20 rep. Solo pump, niente cedimento", a: 1, ss: 1, g: "curl-man" },
+          { name: "Skull crusher manubri", sets: 3, reps: "20", load: "8 kg cad.", rest: "45 sec", tempo: "2-0-2-0", note: "Leggero, serve solo a far affluire sangue", a: 1, ss: 1, g: "skull-man" }
+        ] },
+        { t: "fin", i: "\u{1F480}", n: "AB FINISHER \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri", list: ["Hanging leg raise \xD715", "Crunch \xD725", "Reverse crunch \xD720", "Plank \xD745 sec"] }
+      ]
+    },
+    {
+      id: 4,
+      label: "D4",
+      title: "BRACCIA PUMP",
+      sub: "Alte rep \xB7 recuperi corti",
+      area: "ARMS",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F4AA}", n: "BICIPITI PUMP", ss: "\u26A1 SUPERSET \u2014 Curl manubri \u2192 Hammer curl senza pausa, poi 45 sec", ex: [
+          { name: "Curl manubri", sets: 4, reps: "15", load: "10 kg cad.", rest: "\u2014", tempo: "2-0-2-0", note: "Alte rep, recuperi corti. Obiettivo pump, non cedimento", a: 1, ss: 1, g: "curl-man" },
+          { name: "Hammer curl", sets: 4, reps: "15", load: "10 kg cad.", rest: "45 sec", tempo: "2-0-2-0", note: "Chiude il superset. Il braccio deve gonfiarsi", a: 1, ss: 1, g: "hammer" },
+          { name: "Curl alternati", sets: 3, reps: "15/braccio", load: "10 kg cad.", rest: "45 sec", tempo: "2-1-2-0", note: "Supina la mano in cima", a: 1, g: "curl-alt" }
+        ] },
+        { i: "\u{1F4AA}", n: "TRICIPITI PUMP", ss: "\u26A1 SUPERSET \u2014 Overhead extension \u2192 Kickback senza pausa, poi 45 sec", ex: [
+          { name: "Overhead extension manubrio", sets: 4, reps: "15", load: "12 kg", rest: "\u2014", tempo: "3-0-1-0", note: "Due mani sopra la testa, stretch del capo lungo", a: 1, ss: 1, g: "ohe-man" },
+          { name: "Kickback manubrio", sets: 4, reps: "20/braccio", load: "6 kg", rest: "45 sec", tempo: "2-1-1-0", note: "20 rep per braccio, bruciore garantito", a: 1, ss: 1, g: "kickback" },
+          { name: "Push-up diamante", sets: 3, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Cedimento, chiude il blocco tricipiti", a: 1, g: "diamond" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante ogni giorno della hell week", v: 1, g: "hlr" },
+          { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 20 kg", rest: "40 sec", tempo: "2-0-2-0", note: "Recuperi corti, lavoro metabolico", v: 1, g: "crunch-zav" }
+        ] }
+      ]
+    },
+    {
+      id: 5,
+      label: "D5",
+      title: "PETTO PUMP",
+      sub: "Volume alto \xB7 petto gonfio",
+      area: "CHEST",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F3CB}\uFE0F", n: "PETTO PUMP", ex: [
+          { name: "Panca manubri piana", sets: 4, reps: "15", load: "18 kg cad.", rest: "60 sec", tempo: "2-1-2-0", note: "Carico moderato, alte rep. Movimento ad arco", g: "panca-man" },
+          { name: "Panca inclinata manubri", sets: 3, reps: "15", load: "18 kg cad.", rest: "60 sec", tempo: "2-1-2-0", note: "Parte alta, alte rep", g: "panca-incl" },
+          { name: "Croci inclinate", sets: 3, reps: "15", load: "8 kg cad.", rest: "45 sec", tempo: "3-1-1-0", note: "Stretch massimo. Il petto deve bruciare", g: "croci-incl" },
+          { name: "Push-up", sets: 2, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Cedimento. Finisher metabolico sul petto", g: "pushup" }
+        ] },
+        { i: "\u{1F4AA}", n: "BRACCIA PUMP", ss: "\u26A1 SUPERSET \u2014 Curl inclinato \u2192 Floor press stretto, poi 45 sec", ex: [
+          { name: "Curl inclinato manubri", sets: 3, reps: "15", load: "8 kg cad.", rest: "\u2014", tempo: "3-0-1-0", note: "Leggero, alte rep in allungamento", a: 1, ss: 1, g: "curl-incl" },
+          { name: "Floor press presa stretta", sets: 3, reps: "15", load: "18 kg/lato", rest: "45 sec", tempo: "2-1-1-0", note: "A terra, gomiti che toccano il pavimento", a: 1, ss: 1, g: "floor-press" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging knee raise", sets: 3, reps: "20", load: "BW", rest: "40 sec", tempo: "2-1-2-0", note: "Ginocchia piegate, pi\xF9 rep e pi\xF9 volume", v: 1, g: "hkr" },
+          { name: "Russian twist zavorrato", sets: 3, reps: "20/lato", load: "disco 10 kg", rest: "40 sec", tempo: "2-0-2-0", note: "Obliqui, piedi sollevati", v: 1, g: "russian" }
+        ] }
+      ]
+    },
+    {
+      id: 6,
+      label: "D6",
+      title: "BRACCIA HEAVY 2",
+      sub: "Secondo giro pesante \xB7 carichi pieni",
+      area: "ARMS",
+      dur: 45,
+      int: 1,
+      blocks: [
+        { i: "\u{1F4AA}", n: "BICIPITI", ex: [
+          { name: "Curl bilanciere", sets: 4, reps: "8", load: "30 kg", rest: "90 sec", tempo: "2-1-2-0", note: "Carico pi\xF9 alto del D1, rep pi\xF9 basse", a: 1, g: "curl-bil" },
+          { name: "Preacher curl EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Isolamento puro, impossibile barare", a: 1, g: "preacher" },
+          { name: "Curl inclinato manubri", sets: 3, reps: "12", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Stretch del capo lungo", a: 1, g: "curl-incl" }
+        ] },
+        { i: "\u{1F4AA}", n: "TRICIPITI", ex: [
+          { name: "Panca stretta", sets: 4, reps: "8", load: "24 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Carico pi\xF9 alto del D1", a: 1, g: "close-grip" },
+          { name: "Skull crusher manubri", sets: 3, reps: "12", load: "12 kg cad.", rest: "60 sec", tempo: "3-0-1-0", note: "Presa neutra, range pi\xF9 ampio del bilanciere", a: 1, g: "skull-man" },
+          { name: "Overhead extension manubrio", sets: 3, reps: "12", load: "14 kg", rest: "60 sec", tempo: "3-0-1-0", note: "Stretch massimo del capo lungo", a: 1, g: "ohe-man" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "5 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Con carico. Se crolli sotto 12 rep, togli il disco", v: 1, g: "hlr" },
+          { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 22,5 kg", rest: "45 sec", tempo: "2-1-2-0", note: "Carico aumentato rispetto ai giorni precedenti", v: 1, g: "crunch-zav" }
+        ] }
+      ]
+    },
+    {
+      id: 7,
+      label: "D7",
+      title: "V DAY BRUTAL",
+      sub: "Addome dominante \xB7 braccia scariche",
+      area: "V CORE",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F53B}", n: "BLOCCO A \u2014 ADDOME BASSO", ex: [
+          { name: "Hanging leg raise zavorrato", sets: 4, reps: "15", load: "5 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Con carico. Il giorno pi\xF9 duro per l'addome basso", v: 1, g: "hlr" },
+          { name: "Reverse crunch zavorrato", sets: 4, reps: "20", load: "10 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Bacino che si stacca sempre", v: 1, g: "rev-crunch" },
+          { name: "V-ups", sets: 3, reps: "15", load: "BW", rest: "40 sec", tempo: "2-0-2-0", note: "Gambe dritte, tocca i piedi in alto", v: 1, g: "vups" }
+        ] },
+        { i: "\u{1F53B}", n: "BLOCCO B \u2014 RETTO + OBLIQUI", ex: [
+          { name: "Crunch zavorrato", sets: 4, reps: "25", load: "disco 20 kg", rest: "45 sec", tempo: "2-0-2-0", note: "25 rep per serie con carico alto", v: 1, g: "crunch-zav" },
+          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo, eccentrica 3 sec", v: 1, g: "situp-decl" },
+          { name: "Russian twist zavorrato", sets: 3, reps: "25/lato", load: "disco 10 kg", rest: "40 sec", tempo: "2-0-2-0", note: "25 per lato. Obliqui in fiamme", v: 1, g: "russian" }
+        ] },
+        { i: "\u{1F53B}", n: "BLOCCO C \u2014 ISOMETRIA", ex: [
+          { name: "Plank", sets: 3, reps: "60 sec", load: "disco 10 kg sulla schiena", rest: "45 sec", tempo: "isometria", note: "Con carico. Corpo dritto, glutei stretti", v: 1, g: "plank" },
+          { name: "Ab wheel", sets: 3, reps: "12", load: "BW", rest: "60 sec", tempo: "3-0-1-0", note: "Schiena neutra, eccentrica controllata", v: 1, g: "ab-wheel" }
+        ] },
+        { t: "fin", i: "\u{1F480}", n: "AB FINISHER \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri", list: ["Crunch \xD725", "Reverse crunch \xD720", "Hanging knee raise \xD715", "Plank \xD745 sec"] }
+      ]
+    },
+    {
+      id: 8,
+      label: "D8",
+      title: "PETTO + PULL UP 2",
+      sub: "Ultimo giorno pesante",
+      area: "CHEST + BACK",
+      dur: 45,
+      int: 1,
+      blocks: [
+        { i: "\u{1F3CB}\uFE0F", n: "PETTO", ex: [
+          { name: "Panca piana bilanciere", sets: 4, reps: "8", load: "25 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Ultimo giorno pesante di petto. Dai tutto", g: "panca-piana" },
+          { name: "Panca inclinata manubri", sets: 3, reps: "12", load: "20 kg cad.", rest: "75 sec", tempo: "3-1-1-0", note: "Parte alta del petto", g: "panca-incl" }
+        ] },
+        { i: "\u{1F519}", n: "DORSALI", ex: [
+          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Secondo giorno di pull-up. Prova a battere le rep totali del D2", g: "pullup" }
+        ] },
+        { i: "\u{1F4AA}", n: "BRACCIA", ex: [
+          { name: "Curl bilanciere", sets: 3, reps: "12", load: "25 kg", rest: "60 sec", tempo: "2-1-2-0", note: "Rep pi\xF9 alte, recuperi corti: siamo all'ottavo giorno", a: 1, g: "curl-bil" },
+          { name: "Skull crusher EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Gomiti fermi", a: 1, g: "skull" },
+          { name: "Kickback manubrio", sets: 2, reps: "20/braccio", load: "6 kg", rest: "45 sec", tempo: "2-1-1-0", note: "Chiusura metabolica", a: 1, g: "kickback" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante fino alla fine", v: 1, g: "hlr" },
+          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo", v: 1, g: "situp-decl" }
+        ] }
+      ]
+    },
+    {
+      id: 9,
+      label: "D9",
+      title: "FINAL PUMP",
+      sub: "Chiusura \xB7 tutto leggero e gonfio",
+      area: "FINALE",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F4AA}", n: "BRACCIA \u2014 PUMP MASSIMO", ss: "\u26A1 SUPERSET \u2014 Curl manubri \u2192 French press, 4 giri con 45 sec di recupero", ex: [
+          { name: "Curl manubri", sets: 4, reps: "20", load: "8 kg cad.", rest: "\u2014", tempo: "2-0-2-0", note: "20 rep leggere. Ultimo giorno: cerchi solo sangue nel muscolo", a: 1, ss: 1, g: "curl-man" },
+          { name: "French press EZ", sets: 4, reps: "20", load: "10 kg EZ", rest: "45 sec", tempo: "2-0-2-0", note: "20 rep. Il braccio deve sembrare esploso", a: 1, ss: 1, g: "french-ez" },
+          { name: "Hammer curl", sets: 3, reps: "20", load: "8 kg cad.", rest: "45 sec", tempo: "2-0-2-0", note: "Ancora 20 rep, carico leggero", a: 1, g: "hammer" }
+        ] },
+        { i: "\u{1F3CB}\uFE0F", n: "PETTO \u2014 PUMP", ex: [
+          { name: "Panca manubri piana", sets: 3, reps: "15", load: "16 kg cad.", rest: "45 sec", tempo: "2-1-2-0", note: "Leggero, alte rep, recuperi corti", g: "panca-man" },
+          { name: "Croci manubri", sets: 3, reps: "20", load: "8 kg cad.", rest: "45 sec", tempo: "2-1-1-0", note: "20 rep. Stretch e contrazione, il petto si riempie", g: "croci" },
+          { name: "Push-up", sets: 2, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Ultimo cedimento della hell week", g: "pushup" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE \u2014 FINALE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "40 sec", tempo: "2-1-2-0", note: "Nono giorno consecutivo di addome. Chiudi bene", v: 1, g: "hlr" },
+          { name: "Crunch zavorrato", sets: 3, reps: "25", load: "disco 15 kg", rest: "40 sec", tempo: "2-0-2-0", note: "25 rep, carico ridotto. Bruciore finale", v: 1, g: "crunch-zav" }
+        ] },
+        { t: "fin", i: "\u{1F3C1}", n: "HELL WEEK FINISHER \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri \xB7 l'ultima fatica", list: ["Push-up \xD720", "Curl manubri \xD720", "Crunch \xD725", "Plank \xD760 sec"] }
+      ]
+    }
+  ];
+  var ACHILLE = {
+    warn: "Dolore accettabile fino a 4/10. Se supera 5/10 o il giorno dopo \xE8 pi\xF9 gonfio \u2192 riduci il range.",
+    ex: [
+      { n: "Heel drop eccentrico su gradino", s: "3\xD715", note: "Sali con 2 piedi, scendi lentamente solo col piede infiammato in 3 sec. Fuori dall'allenamento." },
+      { n: "Isometrico seduto", s: "3\xD745 sec", note: "Piede piatto a terra, spingi verso il basso senza alzarti. Intensit\xE0 6/10." }
+    ]
+  };
+  function useTimer() {
+    const [state, setState] = useState({ end: null, total: 0, remaining: 0, paused: false, label: "", done: false });
+    const tRef = useRef(null), wakeRef = useRef(null), audioRef = useRef(null);
+    const ensureAudio = () => {
+      if (!audioRef.current) {
+        try {
+          audioRef.current = new (window.AudioContext || window.webkitAudioContext)();
+        } catch (e) {
+        }
+      }
+      if (audioRef.current?.state === "suspended") audioRef.current.resume();
+      return audioRef.current;
+    };
+    const beep = useCallback(() => {
+      const ctx = ensureAudio();
+      if (ctx) {
+        const tone = (f, s, d) => {
+          const o = ctx.createOscillator(), g = ctx.createGain();
+          o.connect(g);
+          g.connect(ctx.destination);
+          o.frequency.value = f;
+          o.type = "square";
+          g.gain.setValueAtTime(1e-4, ctx.currentTime + s);
+          g.gain.exponentialRampToValueAtTime(0.35, ctx.currentTime + s + 0.02);
+          g.gain.exponentialRampToValueAtTime(1e-4, ctx.currentTime + s + d);
+          o.start(ctx.currentTime + s);
+          o.stop(ctx.currentTime + s + d);
+        };
+        tone(880, 0, 0.15);
+        tone(880, 0.2, 0.15);
+        tone(1320, 0.4, 0.5);
+      }
+      try {
+        if (navigator.vibrate) navigator.vibrate([300, 120, 300, 120, 500]);
+      } catch (e) {
+      }
+    }, []);
+    const requestWake = async () => {
+      try {
+        if ("wakeLock" in navigator && !wakeRef.current) {
+          wakeRef.current = await navigator.wakeLock.request("screen");
+          wakeRef.current.addEventListener("release", () => {
+            wakeRef.current = null;
+          });
+        }
+      } catch (e) {
+      }
+    };
+    const releaseWake = () => {
+      try {
+        wakeRef.current?.release();
+        wakeRef.current = null;
+      } catch (e) {
+      }
+    };
+    useEffect(() => {
+      if (state.end === null || state.paused || state.done) return;
+      const tick = () => {
+        setState((s) => {
+          if (s.end === null || s.paused || s.done) return s;
+          const rem = Math.max(0, Math.ceil((s.end - Date.now()) / 1e3));
+          if (rem <= 0) {
+            beep();
+            releaseWake();
+            return { ...s, remaining: 0, done: true };
+          }
+          return rem !== s.remaining ? { ...s, remaining: rem } : s;
+        });
+        tRef.current = setTimeout(tick, 250);
+      };
+      tick();
+      return () => clearTimeout(tRef.current);
+    }, [state.end, state.paused, state.done, beep]);
+    useEffect(() => {
+      const onVis = () => {
+        if (document.visibilityState === "visible") {
+          setState((s) => {
+            if (s.end === null || s.paused || s.done) return s;
+            const rem = Math.max(0, Math.ceil((s.end - Date.now()) / 1e3));
+            if (rem <= 0) {
+              beep();
+              return { ...s, remaining: 0, done: true };
+            }
+            return { ...s, remaining: rem };
+          });
+          requestWake();
+        }
+      };
+      document.addEventListener("visibilitychange", onVis);
+      return () => document.removeEventListener("visibilitychange", onVis);
+    }, [beep]);
+    const start = (sec, label = "Recupero") => {
+      if (!sec) return;
+      ensureAudio();
+      requestWake();
+      setState({ end: Date.now() + sec * 1e3, total: sec, remaining: sec, paused: false, label, done: false });
+    };
+    const toggle = () => setState((s) => {
+      if (s.end === null) return s;
+      if (s.paused) {
+        requestWake();
+        return { ...s, paused: false, end: Date.now() + s.remaining * 1e3 };
+      }
+      releaseWake();
+      return { ...s, paused: true };
+    });
+    const add = (n) => setState((s) => s.end === null ? s : { ...s, total: s.total + n, remaining: s.remaining + n, end: (s.done ? Date.now() : s.end) + n * 1e3, done: false });
+    const stop = () => {
+      releaseWake();
+      setState({ end: null, total: 0, remaining: 0, paused: false, label: "", done: false });
+    };
+    return { state, start, toggle, add, stop };
+  }
+  var fmt = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+  var parseRest = (r) => {
+    if (!r || r === "\u2014") return null;
+    let t = 0;
+    const m = r.match(/(\d+)\s*min/), s = r.match(/(\d+)\s*sec/);
+    if (m) t += +m[1] * 60;
+    if (s) t += +s[1];
+    return t || null;
+  };
+  function useStore() {
+    const [done, setDone] = useState({});
+    const KEY = "hell-week-v1";
+    useEffect(() => {
+      (async () => {
+        try {
+          const r = await window.storage.get(KEY);
+          if (r?.value) setDone(JSON.parse(r.value));
+        } catch (e) {
+        }
+      })();
+    }, []);
+    const persist = useCallback(async (d) => {
+      try {
+        await window.storage.set(KEY, JSON.stringify(d));
+      } catch (e) {
+      }
+    }, []);
+    const toggleSet = (k) => setDone((p) => {
+      const n = { ...p, [k]: !p[k] };
+      if (!n[k]) delete n[k];
+      persist(n);
+      return n;
+    });
+    const resetDay = (d) => setDone((p) => {
+      const n = Object.fromEntries(Object.entries(p).filter(([k]) => !k.startsWith(`d${d}-`)));
+      persist(n);
+      return n;
+    });
+    return { done, toggleSet, resetDay };
+  }
+  var Pill = ({ children, kind = "d" }) => {
+    const st = { d: { background: SURFACE_2, color: WHITE }, v: { background: VOLT, color: BG } }[kind];
+    return /* @__PURE__ */ React.createElement("span", { style: { ...st, borderRadius: 4, fontSize: 11, fontWeight: 700, padding: "4px 9px", fontFamily: BODY, whiteSpace: "nowrap", letterSpacing: "0.02em", textTransform: "uppercase" } }, children);
+  };
+  var Tag = ({ children, c = VOLT }) => /* @__PURE__ */ React.createElement("span", { style: { fontSize: 9, fontFamily: BODY, fontWeight: 800, background: c, color: BG, borderRadius: 2, padding: "1px 5px", letterSpacing: "0.08em", textTransform: "uppercase", lineHeight: 1.4 } }, children);
+  function Guide({ g }) {
+    if (!g) return null;
+    return /* @__PURE__ */ React.createElement("div", { style: { marginTop: 14, paddingTop: 14, borderTop: `1px solid ${VOLT}25` } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 9, fontWeight: 800, color: VOLT, letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 12 } }, "/ Come si esegue"), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 5 } }, "Setup"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 13, color: WHITE, lineHeight: 1.55 } }, g.s)), /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 6 } }, "Esecuzione"), g.p.map((s, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { display: "flex", gap: 10, alignItems: "flex-start", padding: "5px 0" } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 16, fontStyle: "italic", color: VOLT, minWidth: 22, lineHeight: 1.4, flexShrink: 0 } }, "0", i + 1), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 13, color: WHITE, lineHeight: 1.5 } }, s)))), /* @__PURE__ */ React.createElement("div", { style: { background: "rgba(255,107,0,0.08)", borderLeft: `2px solid ${ORANGE}`, padding: "10px 12px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: ORANGE, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 } }, "\u26A0\uFE0F Errore tipico"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.5 } }, g.m)));
+  }
+  function ExRow({ ex, dayId, uid, done, onToggle, onStart }) {
+    const [open, setOpen] = useState(false);
+    const rest = parseRest(ex.rest);
+    const guide = ex.g ? G[ex.g] : null;
+    const sd = Array.from({ length: ex.sets }).filter((_, i) => done[`d${dayId}-${uid}-${i}`]).length;
+    const allDone = sd === ex.sets;
+    return /* @__PURE__ */ React.createElement("div", { style: {
+      background: open ? SURFACE_2 : SURFACE,
+      padding: "16px 18px",
+      marginBottom: 2,
+      borderLeft: allDone || open ? `3px solid ${VOLT}` : "3px solid transparent",
+      opacity: allDone ? 0.55 : 1,
+      transition: "all 0.15s"
+    } }, /* @__PURE__ */ React.createElement("div", { onClick: () => setOpen((o) => !o), style: { cursor: "pointer" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontWeight: 600, fontSize: 14, color: WHITE, flex: 1, lineHeight: 1.35, display: "flex", alignItems: "center", flexWrap: "wrap", gap: 6, textDecoration: allDone ? "line-through" : "none" } }, ex.name, ex.v && /* @__PURE__ */ React.createElement(Tag, null, "V"), ex.a && /* @__PURE__ */ React.createElement(Tag, { c: WHITE }, "ARMS")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 6, alignItems: "center", flexShrink: 0 } }, /* @__PURE__ */ React.createElement(Pill, { kind: "v" }, ex.sets, "\xD7", ex.reps), /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 10, fontFamily: DISPLAY } }, open ? "\u2212" : "+"))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 14, marginTop: 9, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: VOLT, textTransform: "uppercase", letterSpacing: "0.03em" } }, ex.load), ex.rest !== "\u2014" && /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 600, color: MUTED, textTransform: "uppercase" } }, "\u25F7 ", ex.rest), ex.tempo && /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 600, color: MUTED, textTransform: "uppercase" } }, "\u25B6 ", ex.tempo))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 6, marginTop: 12, flexWrap: "wrap", alignItems: "center" } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 9, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase", marginRight: 2 } }, "Serie"), Array.from({ length: ex.sets }).map((_, i) => {
+      const key = `d${dayId}-${uid}-${i}`;
+      const isDone = !!done[key];
+      return /* @__PURE__ */ React.createElement(
+        "button",
+        {
+          key: i,
+          onClick: (e) => {
+            e.stopPropagation();
+            onToggle(key);
+            if (!isDone && rest) onStart(rest);
+          },
+          style: {
+            width: 32,
+            height: 32,
+            borderRadius: 4,
+            background: isDone ? VOLT : "transparent",
+            border: isDone ? "none" : `1.5px solid ${DIM}`,
+            color: isDone ? BG : MUTED,
+            fontFamily: DISPLAY,
+            fontSize: 16,
+            fontStyle: "italic",
+            cursor: "pointer",
+            transition: "all 0.12s",
+            lineHeight: 1,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }
+        },
+        isDone ? "\u2713" : i + 1
+      );
+    })), open && /* @__PURE__ */ React.createElement(React.Fragment, null, ex.note && /* @__PURE__ */ React.createElement("div", { style: { marginTop: 12, paddingTop: 12, borderTop: "1px solid #ffffff10", fontFamily: BODY, fontSize: 13, color: MUTED, lineHeight: 1.6 } }, ex.note), /* @__PURE__ */ React.createElement(Guide, { g: guide })));
+  }
+  function Block({ b, dayId, bi, done, onToggle, onStart }) {
+    if (b.t === "info") {
+      return /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, borderLeft: `3px solid ${ORANGE}`, padding: "14px 18px", marginBottom: 24, display: "flex", gap: 12 } }, /* @__PURE__ */ React.createElement("span", { style: { fontSize: 16 } }, b.i), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontStyle: "italic", fontSize: 18, color: ORANGE, marginBottom: 4 } }, b.n), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 13, color: MUTED, lineHeight: 1.5 } }, b.note)));
+    }
+    if (b.t === "fin") {
+      return /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 28 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12, marginBottom: 8 } }, /* @__PURE__ */ React.createElement("div", { style: { width: 24, height: 2, background: ORANGE } }), /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: DISPLAY, fontSize: 22, color: ORANGE, margin: 0, lineHeight: 1, fontStyle: "italic" } }, b.n)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: MUTED, marginBottom: 10, marginLeft: 36 } }, b.note), /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE } }, b.list.map((it, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { display: "flex", alignItems: "center", gap: 14, padding: "14px 18px", borderBottom: i < b.list.length - 1 ? "1px solid #ffffff08" : "none" } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 22, color: ORANGE, fontStyle: "italic", minWidth: 28 } }, String(i + 1).padStart(2, "0")), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 14, fontWeight: 600, color: WHITE } }, it)))));
+    }
+    return /* @__PURE__ */ React.createElement("div", { style: { marginBottom: 28 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12, marginBottom: 12, paddingTop: 8 } }, /* @__PURE__ */ React.createElement("div", { style: { width: 24, height: 2, background: VOLT, flexShrink: 0 } }), /* @__PURE__ */ React.createElement("h2", { style: { fontFamily: DISPLAY, fontSize: 22, color: WHITE, margin: 0, lineHeight: 1, fontStyle: "italic" } }, b.n)), b.ss && /* @__PURE__ */ React.createElement("div", { style: { background: "rgba(255,107,0,0.08)", borderLeft: `2px solid ${ORANGE}`, padding: "10px 14px", marginBottom: 2, fontFamily: BODY, fontSize: 12, color: ORANGE, lineHeight: 1.5, fontWeight: 500 } }, b.ss), b.ex.map((e, i) => /* @__PURE__ */ React.createElement(ExRow, { key: i, ex: e, dayId, uid: `b${bi}e${i}`, done, onToggle, onStart })));
+  }
+  function TimerBar({ t, toggle, add, stop }) {
+    if (t.end === null) return null;
+    const prog = t.total ? (t.total - t.remaining) / t.total * 100 : 0;
+    return /* @__PURE__ */ React.createElement("div", { style: { position: "fixed", bottom: 0, left: 0, right: 0, background: t.done ? VOLT : "#161616", padding: "16px 20px 22px", zIndex: 1e3, maxWidth: 480, margin: "0 auto", boxShadow: "0 -8px 24px rgba(0,0,0,0.7)", transition: "background 0.25s" } }, /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", top: 0, left: 0, right: 0, height: 3, background: t.done ? "transparent" : "#ffffff10" } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${prog}%`, height: "100%", background: t.done ? "transparent" : VOLT, transition: "width 0.25s linear" } })), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { flex: 1, minWidth: 0 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: t.done ? BG : MUTED, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 2, opacity: t.done ? 0.7 : 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" } }, t.done ? "\u2713 RECUPERO FINITO" : t.paused ? "IN PAUSA" : t.label), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 44, color: t.done ? BG : WHITE, lineHeight: 1, fontStyle: "italic" } }, t.done ? "GO!" : fmt(t.remaining))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 8, alignItems: "center", flexShrink: 0 } }, !t.done && /* @__PURE__ */ React.createElement("button", { onClick: toggle, style: { width: 46, height: 46, borderRadius: 23, background: VOLT, color: BG, border: "none", fontSize: 15, fontWeight: 800, cursor: "pointer", fontFamily: BODY } }, t.paused ? "\u25B6" : "\u275A\u275A"), /* @__PURE__ */ React.createElement("button", { onClick: () => add(30), style: { padding: "0 13px", height: 46, borderRadius: 23, background: t.done ? BG : "#252525", color: t.done ? VOLT : WHITE, border: "none", fontFamily: BODY, fontSize: 12, fontWeight: 800, cursor: "pointer" } }, "+30s"), /* @__PURE__ */ React.createElement("button", { onClick: stop, style: { width: 46, height: 46, borderRadius: 23, background: t.done ? BG : "transparent", color: t.done ? VOLT : MUTED, border: t.done ? "none" : "1px solid #ffffff20", fontSize: 17, fontWeight: 700, cursor: "pointer", fontFamily: BODY } }, "\xD7"))));
+  }
+  function QuickTimer({ t, start }) {
+    const [open, setOpen] = useState(false);
+    if (t.end !== null) return null;
+    const presets = [40, 45, 60, 75, 90, 120];
+    return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement("button", { onClick: () => setOpen((o) => !o), style: { position: "fixed", bottom: 24, right: 16, width: 58, height: 58, borderRadius: 29, background: open ? "#252525" : VOLT, color: open ? VOLT : BG, border: "none", cursor: "pointer", zIndex: 999, fontFamily: DISPLAY, fontSize: 28, fontStyle: "italic", boxShadow: "0 4px 18px rgba(0,0,0,0.6)" } }, open ? "\xD7" : "\u25F7"), open && /* @__PURE__ */ React.createElement("div", { style: { position: "fixed", bottom: 92, right: 16, background: "#161616", border: `1px solid ${VOLT}30`, borderRadius: 14, padding: "14px", zIndex: 998, boxShadow: "0 8px 24px rgba(0,0,0,0.7)", minWidth: 210 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: VOLT, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 } }, "/ Timer rapido"), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6 } }, presets.map((p) => /* @__PURE__ */ React.createElement("button", { key: p, onClick: () => {
+      start(p, "Recupero");
+      setOpen(false);
+    }, style: { background: SURFACE, color: WHITE, border: `1px solid ${VOLT}20`, borderRadius: 6, padding: "12px 0", fontFamily: DISPLAY, fontSize: 18, fontStyle: "italic", cursor: "pointer" } }, p < 60 ? `${p}s` : p % 60 === 0 ? `${p / 60}min` : `${Math.floor(p / 60)}:${p % 60}`)))));
+  }
+  function Card({ title, sub, children, open: initOpen = false }) {
+    const [open, setOpen] = useState(initOpen);
+    return /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, marginBottom: 2, borderLeft: open ? `3px solid ${VOLT}` : "3px solid transparent" } }, /* @__PURE__ */ React.createElement("div", { onClick: () => setOpen((o) => !o), style: { padding: "18px 20px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { flex: 1 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 22, color: WHITE, marginBottom: 2, lineHeight: 1, fontStyle: "italic" } }, title), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.06em", textTransform: "uppercase" } }, sub)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 24, color: open ? VOLT : MUTED, flexShrink: 0, lineHeight: 1 } }, open ? "\u2212" : "+")), open && /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 22px", borderTop: "1px solid #ffffff08" } }, children));
+  }
+  var Row = ({ l, v, d, last }) => /* @__PURE__ */ React.createElement("div", { style: { paddingTop: 12, paddingBottom: last ? 0 : 12, borderBottom: last ? "none" : "1px solid #ffffff08" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, marginBottom: 4 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 800, color: WHITE, letterSpacing: "0.08em", textTransform: "uppercase" } }, l), v && /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 18, color: VOLT, fontStyle: "italic" } }, v)), d && /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: MUTED, lineHeight: 1.5 } }, d));
+  function App() {
+    const [active, setActive] = useState(0);
+    const { state: t, start, toggle, add, stop } = useTimer();
+    const { done, toggleSet, resetDay } = useStore();
+    const day = days[active];
+    const dayStats = (d) => {
+      let tot = 0, comp = 0;
+      d.blocks.forEach((b, bi) => {
+        if (!b.ex) return;
+        b.ex.forEach((e, i) => {
+          tot += e.sets;
+          for (let s = 0; s < e.sets; s++) if (done[`d${d.id}-b${bi}e${i}-${s}`]) comp++;
+        });
+      });
+      return { tot, comp };
+    };
+    const { tot: total, comp: completed } = dayStats(day);
+    const pct = total ? Math.round(completed / total * 100) : 0;
+    const daysDone = days.filter((d) => {
+      const s = dayStats(d);
+      return s.tot > 0 && s.comp === s.tot;
+    }).length;
+    return /* @__PURE__ */ React.createElement("div", { style: { background: BG, minHeight: "100vh", maxWidth: 480, margin: "0 auto", paddingBottom: t.end !== null ? 110 : 0 } }, /* @__PURE__ */ React.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap", rel: "stylesheet" }), /* @__PURE__ */ React.createElement("div", { style: { padding: "26px 20px 6px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: RED, letterSpacing: "0.18em", marginBottom: 8 } }, "/ 9 GIORNI \xB7 NO STOP"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 62, color: WHITE, lineHeight: 0.85, fontStyle: "italic", marginBottom: 10 } }, "HELL", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: VOLT } }, "WEEK.")), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" } }, "Braccia \xB7 Petto \xB7 V \u2014 obiettivo pump")), /* @__PURE__ */ React.createElement("div", { style: { padding: "20px 20px 0" } }, /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Hell week"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 26, color: daysDone === 9 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, daysDone, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/9 giorni"))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 4 } }, days.map((d, i) => {
+      const s = dayStats(d);
+      const full = s.tot > 0 && s.comp === s.tot;
+      const part = s.comp > 0 && !full;
+      return /* @__PURE__ */ React.createElement("div", { key: d.id, onClick: () => setActive(i), style: {
+        flex: 1,
+        height: 8,
+        borderRadius: 2,
+        cursor: "pointer",
+        background: full ? VOLT : part ? `${VOLT}55` : "#252525",
+        outline: active === i ? `1px solid ${WHITE}` : "none"
+      } });
+    })))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", overflowX: "auto", padding: "16px 20px 14px", gap: 8, scrollbarWidth: "none" } }, days.map((d, i) => /* @__PURE__ */ React.createElement("button", { key: d.id, onClick: () => setActive(i), style: {
+      flexShrink: 0,
+      padding: "10px 15px",
+      borderRadius: 4,
+      border: "none",
+      background: active === i ? VOLT : SURFACE,
+      color: active === i ? BG : WHITE,
+      fontFamily: BODY,
+      fontWeight: 800,
+      fontSize: 12,
+      cursor: "pointer",
+      letterSpacing: "0.06em",
+      textTransform: "uppercase"
+    } }, d.label))), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 24px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 14, marginBottom: 6 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 68, color: VOLT, lineHeight: 0.85, fontStyle: "italic" } }, "0", day.id), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: MUTED, letterSpacing: "0.15em", textTransform: "uppercase", transform: "translateY(-10px)" } }, "/ ", day.area)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 38, color: WHITE, lineHeight: 0.9, fontStyle: "italic", marginBottom: 6 } }, day.title), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: MUTED, fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 14 } }, day.sub), /* @__PURE__ */ React.createElement("div", { style: { display: "inline-block", background: day.int ? `${RED}18` : `${VOLT}15`, border: `1px solid ${day.int ? RED : VOLT}40`, borderRadius: 4, padding: "5px 10px", marginBottom: 14 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: day.int ? RED : VOLT, letterSpacing: "0.1em", textTransform: "uppercase" } }, day.int ? "\u{1F525} Giornata pesante" : "\u{1F4A8} Giornata pump")), /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Progresso \xB7 ~", day.dur, " min"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 24, color: pct === 100 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, completed, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/", total))), /* @__PURE__ */ React.createElement("div", { style: { height: 6, background: "#252525", borderRadius: 3, overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${pct}%`, height: "100%", background: VOLT, transition: "width 0.3s" } })), completed > 0 && /* @__PURE__ */ React.createElement("button", { onClick: () => resetDay(day.id), style: { marginTop: 10, background: "transparent", border: `1px solid ${DIM}`, color: MUTED, borderRadius: 4, padding: "6px 12px", fontFamily: BODY, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer" } }, "Azzera giorno"))), active === 0 && /* @__PURE__ */ React.createElement("div", { style: { margin: "0 20px 18px", padding: "12px 14px", background: `${RED}12`, borderLeft: `2px solid ${RED}`, fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, /* @__PURE__ */ React.createElement("strong", { style: { color: RED } }, "\u26A0\uFE0F REGOLA DELLA HELL WEEK:"), " i giorni pesanti e i giorni pump si alternano apposta. Se in un giorno pump ti viene voglia di caricare, non farlo: \xE8 quello che ti permette di arrivare vivo al giorno 9."), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px" } }, day.blocks.map((b, i) => /* @__PURE__ */ React.createElement(Block, { key: i, b, dayId: day.id, bi: i, done, onToggle: toggleSet, onStart: (s) => start(s, "Recupero") }))), /* @__PURE__ */ React.createElement("div", { style: { padding: "16px 0 40px" } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 14px", display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { width: 24, height: 2, background: VOLT } }), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" } }, "Guida hell week")), /* @__PURE__ */ React.createElement(Card, { title: "LA ROTAZIONE", sub: "Perch\xE9 pesante e pump si alternano", open: true }, /* @__PURE__ */ React.createElement(Row, { l: "D1 \xB7 Braccia heavy", v: "\u{1F525}", d: "Carichi pieni su bicipiti e tricipiti" }), /* @__PURE__ */ React.createElement(Row, { l: "D2 \xB7 Petto heavy", v: "\u{1F525}", d: "Panca pesante. Braccia solo in superset leggero" }), /* @__PURE__ */ React.createElement(Row, { l: "D3 \xB7 V day", v: "\u{1F4A8}", d: "Addome brutale, braccia scariche a 20 rep" }), /* @__PURE__ */ React.createElement(Row, { l: "D4 \xB7 Braccia pump", v: "\u{1F4A8}", d: "Alte rep, recuperi corti, zero cedimento sui compound" }), /* @__PURE__ */ React.createElement(Row, { l: "D5 \xB7 Petto pump", v: "\u{1F4A8}", d: "Volume alto con carichi ridotti" }), /* @__PURE__ */ React.createElement(Row, { l: "D6 \xB7 Braccia heavy 2", v: "\u{1F525}", d: "Secondo giro pesante, carichi leggermente pi\xF9 alti del D1" }), /* @__PURE__ */ React.createElement(Row, { l: "D7 \xB7 V day brutal", v: "\u{1F4A8}", d: "Il giorno pi\xF9 duro per l'addome. Braccia a riposo" }), /* @__PURE__ */ React.createElement(Row, { l: "D8 \xB7 Petto + braccia", v: "\u{1F525}", d: "Ultimo giorno pesante. Dai tutto" }), /* @__PURE__ */ React.createElement(Row, { l: "D9 \xB7 Final pump", v: "\u{1F4A8}", d: "Tutto leggero, alte rep. Chiudi gonfio", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "COSA SERVE PER IL PUMP", sub: "Le leve che contano davvero" }, /* @__PURE__ */ React.createElement(Row, { l: "Recuperi corti", v: "40-60 sec", d: "Sui giorni pump non superarli mai. \xC8 la variabile che gonfia il muscolo pi\xF9 del carico." }), /* @__PURE__ */ React.createElement(Row, { l: "Rep alte", v: "15-20", d: "Nei giorni pump. Il sangue entra nel muscolo e ci resta." }), /* @__PURE__ */ React.createElement(Row, { l: "Acqua", v: "3 litri/die", d: "Disidratato non pompi. Il pump \xE8 letteralmente sangue e acqua nel muscolo." }), /* @__PURE__ */ React.createElement(Row, { l: "Carboidrati", d: "Non tagliarli in questi 9 giorni. Il glicogeno tira acqua nel muscolo: senza carbo il pump non arriva." }), /* @__PURE__ */ React.createElement(Row, { l: "Sale", d: "Non eliminarlo. Il sodio serve al trasporto di liquidi nelle cellule muscolari.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "SEGNALI DI ALLARME", sub: "Quando fermarti prima del giorno 9" }, /* @__PURE__ */ React.createElement(Row, { l: "Forza in calo su tutto", d: "Se per due giorni di fila cali su ogni esercizio, salta un giorno pump e riprendi." }), /* @__PURE__ */ React.createElement(Row, { l: "Dolore ai gomiti", d: "Con questo volume su curl e french press \xE8 il primo punto a cedere. Se compare, togli gli esercizi overhead." }), /* @__PURE__ */ React.createElement(Row, { l: "Sonno peggiorato", d: "Sistema nervoso saturo. \xC8 il segnale pi\xF9 affidabile." }), /* @__PURE__ */ React.createElement(Row, { l: "Achille", d: "Se il tendine si infiamma, non \xE8 colpa della scheda ma del volume generale: riduci il cammino e insisti sul protocollo.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "DOPO IL GIORNO 9", sub: "Non saltare questa parte" }, /* @__PURE__ */ React.createElement(Row, { l: "3 giorni di scarico", d: "Zero braccia, zero petto. Solo camminata leggera, cyclette e mobilit\xE0." }), /* @__PURE__ */ React.createElement(Row, { l: "Poi torna alla scheda base", d: "Rientri con carichi al 70-80% per la prima settimana, poi riparti normale." }), /* @__PURE__ */ React.createElement(Row, { l: "Aspettative reali", d: "In 9 giorni non costruisci massa nuova: costruisci pump, densit\xE0 e una base di volume che si trasforma in crescita nelle 2-3 settimane successive, se recuperi bene.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "PROTOCOLLO ACHILLE", sub: "Tutti i giorni \xB7 fuori dall'allenamento" }, /* @__PURE__ */ React.createElement("div", { style: { background: BG, borderLeft: `3px solid ${ORANGE}`, padding: "12px 14px", margin: "16px 0 10px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 16, color: ORANGE, textTransform: "uppercase", marginBottom: 5, fontStyle: "italic" } }, "\u26A0\uFE0F Regola del dolore"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, ACHILLE.warn)), ACHILLE.ex.map((e, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { background: BG, padding: "14px 16px", marginBottom: 2, borderLeft: `2px solid ${VOLT}` } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", gap: 10, marginBottom: 8 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 14, color: WHITE, fontWeight: 600, flex: 1 } }, e.n), /* @__PURE__ */ React.createElement(Pill, { kind: "v" }, e.s)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 13, color: MUTED, lineHeight: 1.6 } }, e.note))))), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", padding: "18px", fontFamily: BODY, fontSize: 10, fontWeight: 700, color: DIM, letterSpacing: "0.2em" } }, "/ 9 DAYS. NO EXCUSES."), /* @__PURE__ */ React.createElement(QuickTimer, { t, start }), /* @__PURE__ */ React.createElement(TimerBar, { t, toggle, add, stop }));
+  }
+  var root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(React.createElement(App));
+})();
+
+</script>
+</body>
+</html>
