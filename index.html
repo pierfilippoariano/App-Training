@@ -46,8 +46,7 @@
         return { key, deleted: true };
       },
       async list(prefix = "") {
-        const keys = Object.keys(localStorage).filter((k) => k.startsWith(prefix));
-        return { keys, prefix };
+        return { keys: Object.keys(localStorage).filter((k) => k.startsWith(prefix)), prefix };
       }
     };
   }
@@ -93,7 +92,12 @@
     "hkr": { s: "Appeso alla sbarra, presa prona, ginocchia flesse.", p: ["Porta le ginocchia verso il petto", "Il bacino si arrotola in alto alla fine", "Pausa 1 sec", "Scendi in 2 sec controllato"], m: "Oscillare per prendere slancio. Se oscilli, riduci le rep." },
     "crunch-zav": { s: "Sdraiato a terra, ginocchia flesse, disco sul petto.", p: ["Arrotola il busto sollevando le scapole", "Movimento corto: non \xE8 un sit-up", "Pausa 1 sec sulla contrazione", "Scendi in 3 sec senza appoggiare del tutto"], m: "Tirare il collo. Le mani tengono solo il disco." },
     "rev-crunch": { s: "Sdraiato, gambe flesse a 90\xB0, mani sotto il sedere.", p: ["Stringi un disco tra i piedi", "Stacca il bacino portando le ginocchia al petto", "Pausa 1 sec sulla contrazione", "Scendi in 2-3 sec vertebra per vertebra"], m: "Slancio delle gambe. Il movimento arrotola il bacino." },
-    "situp-decl": { s: "Panca declinata, piedi bloccati, disco al petto.", p: ["Scendi controllato in 3 sec", "Fermati prima di appoggiare la schiena", "Risali arrotolando il busto", "Pausa 1 sec in alto"], m: "Lanciarsi con le braccia. Il movimento parte dall'addome." },
+    "21s": { s: "Bilanciere EZ leggero, posizione standard di curl in piedi, gomiti ai fianchi.", p: ["Prime 7 rep: solo la met\xE0 BASSA, da braccia distese fino a 90\xB0", "Successive 7 rep: solo la met\xE0 ALTA, da 90\xB0 fino in cima", "Ultime 7 rep: ripetizioni complete", "Tutto in un'unica serie continua, zero pause"], m: "Mollare la tecnica nelle ultime 7. Il bruciore \xE8 previsto: il movimento deve restare pulito." },
+    "leg-ext": { s: "Macchina leg extension. Schiena appoggiata allo schienale, ginocchia allineate al perno della macchina.", p: ["Estendi le gambe contraendo i quadricipiti", "Pausa 1 sec in cima senza iperestendere le ginocchia", "Scendi controllato in 3 sec", "Non far toccare i pesi in basso: tensione continua"], m: "Iperestendere le ginocchia in cima o far rimbalzare i pesi in basso." },
+    "leg-curl": { s: "Macchina leg curl, caviglie sotto il rullo, ginocchia allineate al perno.", p: ["Fianchi ben piantati sulla panca", "Fletti le ginocchia portando i talloni verso il sedere", "Pausa 1 sec sulla contrazione massima", "Scendi in 3 sec, eccentrica lenta"], m: "Sollevare i fianchi per aiutarsi. Restano piantati per isolare i femorali." },
+    "situp-floor": { s: "Sdraiato a terra, ginocchia flesse, piedi bloccati sotto un manubrio pesante o un supporto fisso. Disco tenuto al petto a braccia incrociate.", p: ["Scendi controllato in 3 sec fino a sfiorare terra con le scapole", "Non appoggiare del tutto la schiena tra una rep e l'altra", "Risali arrotolando il busto, non a schiena dritta", "Pausa 1 sec in alto"], m: "Lanciarsi in su usando le braccia o strappare col collo. Il movimento parte dall'addome." },
+    "leg-ext-uni": { s: "Macchina leg extension, una gamba alla volta. Schiena appoggiata, ginocchio allineato al perno.", p: ["Estendi una sola gamba contraendo il quadricipite", "Pausa 1 sec in cima senza iperestendere", "Scendi in 3 sec controllato", "Completa tutte le rep prima di cambiare gamba"], m: "Compensare col bacino sollevando il fianco. Resta piantato sul sedile." },
+    "leg-curl-uni": { s: "Macchina leg curl, una gamba alla volta. Caviglia sotto il rullo, ginocchio al perno.", p: ["Fianchi piantati sulla panca", "Fletti una sola gamba portando il tallone al sedere", "Pausa 1 sec sulla contrazione massima", "Scendi in 3 sec"], m: "Sollevare il fianco del lato che lavora. I fianchi restano fermi." },
     "russian": { s: "Seduto, busto a 45\xB0, piedi sollevati, disco tra le mani.", p: ["Ruota il busto a destra portando il disco verso terra", "Torna al centro e ruota a sinistra", "Ruota il torace, non le braccia", "Piedi sempre sollevati"], m: "Muovere solo le braccia. \xC8 il torace che ruota." },
     "plank": { s: "Sui gomiti, gomiti sotto le spalle, corpo in linea retta.", p: ["Addome contratto, glutei stretti", "Bacino n\xE9 alto n\xE9 basso", "Collo neutro, sguardo a terra", "Respira normalmente"], m: "Bacino che si alza per riposare. Se cedi, fermati." },
     "side-plank": { s: "Plank laterale, gomito sotto la spalla, piedi sovrapposti.", p: ["Solleva il bacino, corpo rigido", "Anca alta per tutta la durata", "Spalla d'appoggio stabile", "Cambia lato"], m: "Anca che scende. Se cedi, appoggia il ginocchio." },
@@ -104,7 +108,7 @@
   var days = [
     {
       id: 1,
-      label: "D1",
+      label: "G1",
       title: "BRACCIA HEAVY",
       sub: "Bicipiti + tricipiti carico pieno",
       area: "ARMS",
@@ -130,7 +134,7 @@
     },
     {
       id: 2,
-      label: "D2",
+      label: "G2",
       title: "PETTO + PULL UP",
       sub: "Spinta pesante + dorsali",
       area: "CHEST + BACK",
@@ -143,23 +147,19 @@
           { name: "Croci manubri", sets: 3, reps: "15", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Alte rep, stretch profondo. Qui arriva il pump", g: "croci" }
         ] },
         { i: "\u{1F519}", n: "DORSALI", ex: [
-          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Larghezza della schiena. Presa larga, mento sopra la sbarra, discesa 3 sec. Se non arrivi a 6 rep usa un elastico", g: "pullup" },
+          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Larghezza della schiena. Presa larga, mento sopra la sbarra, discesa 3 sec", g: "pullup" },
           { name: "Pullover manubrio", sets: 3, reps: "15", load: "22 kg", rest: "60 sec", tempo: "3-0-1-0", note: "Arco dietro la testa. Dorsale + espansione della gabbia toracica", g: "pullover" }
         ] },
-        { i: "\u{1F4AA}", n: "BRACCIA PUMP", ss: "\u26A1 SUPERSET \u2014 Curl seduto \u2192 French press senza pausa, poi 60 sec", ex: [
-          { name: "Curl seduto su panca", sets: 3, reps: "15", load: "10 kg cad.", rest: "\u2014", tempo: "2-1-2-0", note: "Da seduto lo slancio \xE8 impossibile", a: 1, ss: 1, g: "curl-panca" },
-          { name: "French press EZ", sets: 3, reps: "15", load: "12 kg EZ", rest: "60 sec", tempo: "2-0-2-0", note: "Pump leggero, chiude il superset", a: 1, ss: 1, g: "french-ez" }
-        ] },
         { i: "\u{1F53B}", n: "V CORE", ex: [
-          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo, eccentrica 3 sec", v: 1, g: "situp-decl" },
+          { name: "Sit-up zavorrato a terra", sets: 3, reps: "15", load: "disco 15 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Piedi bloccati sotto un manubrio pesante. Eccentrica 3 sec", v: 1, g: "situp-floor" },
           { name: "Reverse crunch zavorrato", sets: 3, reps: "20", load: "8 kg tra i piedi", rest: "45 sec", tempo: "2-0-2-0", note: "Addome basso, alte rep", v: 1, g: "rev-crunch" }
         ] }
       ]
     },
     {
       id: 3,
-      label: "D3",
-      title: "V DAY + PUMP",
+      label: "G3",
+      title: "V DAY",
       sub: "Addome brutale \xB7 braccia leggere",
       area: "V CORE",
       dur: 45,
@@ -184,7 +184,30 @@
     },
     {
       id: 4,
-      label: "D4",
+      label: "G4",
+      title: "GAMBE + CORE",
+      sub: "Solo leg curl e leg extension \xB7 Achille safe",
+      area: "LEGS",
+      dur: 45,
+      int: 0,
+      blocks: [
+        { i: "\u{1F9B5}", n: "QUADRICIPITI", ex: [
+          { name: "Leg extension", sets: 5, reps: "15", load: "carico medio", rest: "60 sec", tempo: "2-1-3-0", note: "Pausa 1 sec in cima senza iperestendere, eccentrica 3 sec. Cinque serie: le ultime devono bruciare", g: "leg-ext" },
+          { name: "Leg extension monopodalica", sets: 3, reps: "12/gamba", load: "40% del carico bilaterale", rest: "45 sec", tempo: "2-1-3-0", note: "Una gamba alla volta. Corregge le asimmetrie e aumenta il tempo sotto tensione", g: "leg-ext-uni" }
+        ] },
+        { i: "\u{1F9B5}", n: "FEMORALI", ex: [
+          { name: "Leg curl", sets: 5, reps: "15", load: "carico medio", rest: "60 sec", tempo: "2-0-3-0", note: "Fianchi piantati sulla panca, eccentrica lenta 3 sec", g: "leg-curl" },
+          { name: "Leg curl monopodalico", sets: 3, reps: "12/gamba", load: "40% del carico bilaterale", rest: "45 sec", tempo: "2-0-3-0", note: "Una gamba alla volta, contrazione massima", g: "leg-curl-uni" }
+        ] },
+        { i: "\u{1F53B}", n: "V CORE", ex: [
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante in tutta la settimana", v: 1, g: "hlr" },
+          { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-2-0", note: "Chiusura di giornata", v: 1, g: "crunch-zav" }
+        ] }
+      ]
+    },
+    {
+      id: 5,
+      label: "G5",
       title: "BRACCIA PUMP",
       sub: "Alte rep \xB7 recuperi corti",
       area: "ARMS",
@@ -202,138 +225,69 @@
           { name: "Push-up diamante", sets: 3, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Cedimento, chiude il blocco tricipiti", a: 1, g: "diamond" }
         ] },
         { i: "\u{1F53B}", n: "V CORE", ex: [
-          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante ogni giorno della hell week", v: 1, g: "hlr" },
+          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante ogni giorno", v: 1, g: "hlr" },
           { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 20 kg", rest: "40 sec", tempo: "2-0-2-0", note: "Recuperi corti, lavoro metabolico", v: 1, g: "crunch-zav" }
         ] }
       ]
     },
     {
-      id: 5,
-      label: "D5",
-      title: "PETTO PUMP",
-      sub: "Volume alto \xB7 petto gonfio",
-      area: "CHEST",
-      dur: 45,
-      int: 0,
-      blocks: [
-        { i: "\u{1F3CB}\uFE0F", n: "PETTO PUMP", ex: [
-          { name: "Panca manubri piana", sets: 4, reps: "15", load: "18 kg cad.", rest: "60 sec", tempo: "2-1-2-0", note: "Carico moderato, alte rep. Movimento ad arco", g: "panca-man" },
-          { name: "Panca inclinata manubri", sets: 3, reps: "15", load: "18 kg cad.", rest: "60 sec", tempo: "2-1-2-0", note: "Parte alta, alte rep", g: "panca-incl" },
-          { name: "Croci inclinate", sets: 3, reps: "15", load: "8 kg cad.", rest: "45 sec", tempo: "3-1-1-0", note: "Stretch massimo. Il petto deve bruciare", g: "croci-incl" },
-          { name: "Push-up", sets: 2, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Cedimento. Finisher metabolico sul petto", g: "pushup" }
-        ] },
-        { i: "\u{1F4AA}", n: "BRACCIA PUMP", ss: "\u26A1 SUPERSET \u2014 Curl inclinato \u2192 Floor press stretto, poi 45 sec", ex: [
-          { name: "Curl inclinato manubri", sets: 3, reps: "15", load: "8 kg cad.", rest: "\u2014", tempo: "3-0-1-0", note: "Leggero, alte rep in allungamento", a: 1, ss: 1, g: "curl-incl" },
-          { name: "Floor press presa stretta", sets: 3, reps: "15", load: "18 kg/lato", rest: "45 sec", tempo: "2-1-1-0", note: "A terra, gomiti che toccano il pavimento", a: 1, ss: 1, g: "floor-press" }
-        ] },
-        { i: "\u{1F53B}", n: "V CORE", ex: [
-          { name: "Hanging knee raise", sets: 3, reps: "20", load: "BW", rest: "40 sec", tempo: "2-1-2-0", note: "Ginocchia piegate, pi\xF9 rep e pi\xF9 volume", v: 1, g: "hkr" },
-          { name: "Russian twist zavorrato", sets: 3, reps: "20/lato", load: "disco 10 kg", rest: "40 sec", tempo: "2-0-2-0", note: "Obliqui, piedi sollevati", v: 1, g: "russian" }
-        ] }
-      ]
-    },
-    {
       id: 6,
-      label: "D6",
-      title: "BRACCIA HEAVY 2",
-      sub: "Secondo giro pesante \xB7 carichi pieni",
-      area: "ARMS",
-      dur: 45,
+      label: "G6",
+      title: "PETTO + BRACCIA",
+      sub: "Sessione lunga 68 min \xB7 tutto pesante",
+      area: "LONG DAY",
+      dur: 68,
       int: 1,
       blocks: [
-        { i: "\u{1F4AA}", n: "BICIPITI", ex: [
-          { name: "Curl bilanciere", sets: 4, reps: "8", load: "30 kg", rest: "90 sec", tempo: "2-1-2-0", note: "Carico pi\xF9 alto del D1, rep pi\xF9 basse", a: 1, g: "curl-bil" },
-          { name: "Preacher curl EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Isolamento puro, impossibile barare", a: 1, g: "preacher" },
-          { name: "Curl inclinato manubri", sets: 3, reps: "12", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Stretch del capo lungo", a: 1, g: "curl-incl" }
+        { i: "\u{1F3CB}\uFE0F", n: "PETTO", ex: [
+          { name: "Panca piana bilanciere", sets: 5, reps: "8", load: "25 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Giornata lunga: qui puoi prenderti i recuperi pieni e caricare", g: "panca-piana" },
+          { name: "Panca inclinata manubri", sets: 4, reps: "12", load: "22 kg cad.", rest: "75 sec", tempo: "3-1-1-0", note: "Parte alta del petto", g: "panca-incl" },
+          { name: "Croci manubri", sets: 4, reps: "15", load: "10 kg cad.", rest: "60 sec", tempo: "3-1-1-0", note: "Stretch profondo e pump", g: "croci" },
+          { name: "Push-up declinato", sets: 3, reps: "AMRAP", load: "BW (piedi su panca)", rest: "60 sec", tempo: "2-0-1-0", note: "Cedimento in ogni serie", g: "pushup-decl" }
         ] },
-        { i: "\u{1F4AA}", n: "TRICIPITI", ex: [
-          { name: "Panca stretta", sets: 4, reps: "8", load: "24 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Carico pi\xF9 alto del D1", a: 1, g: "close-grip" },
-          { name: "Skull crusher manubri", sets: 3, reps: "12", load: "12 kg cad.", rest: "60 sec", tempo: "3-0-1-0", note: "Presa neutra, range pi\xF9 ampio del bilanciere", a: 1, g: "skull-man" },
-          { name: "Overhead extension manubrio", sets: 3, reps: "12", load: "14 kg", rest: "60 sec", tempo: "3-0-1-0", note: "Stretch massimo del capo lungo", a: 1, g: "ohe-man" }
+        { i: "\u{1F519}", n: "DORSALI", ex: [
+          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Secondo giorno di pull-up. Prova a battere le rep totali del G2", g: "pullup" }
+        ] },
+        { i: "\u{1F4AA}", n: "BRACCIA", ex: [
+          { name: "Curl bilanciere", sets: 4, reps: "12", load: "25 kg", rest: "60 sec", tempo: "2-1-2-0", note: "Rep pi\xF9 alte, recuperi corti", a: 1, g: "curl-bil" },
+          { name: "Preacher curl EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Isolamento puro, impossibile barare", a: 1, g: "preacher" },
+          { name: "Skull crusher EZ", sets: 4, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Gomiti fermi", a: 1, g: "skull" },
+          { name: "Kickback manubrio", sets: 3, reps: "20/braccio", load: "6 kg", rest: "45 sec", tempo: "2-1-1-0", note: "Chiusura metabolica", a: 1, g: "kickback" }
         ] },
         { i: "\u{1F53B}", n: "V CORE", ex: [
-          { name: "Hanging leg raise", sets: 3, reps: "15", load: "5 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Con carico. Se crolli sotto 12 rep, togli il disco", v: 1, g: "hlr" },
-          { name: "Crunch zavorrato", sets: 3, reps: "20", load: "disco 22,5 kg", rest: "45 sec", tempo: "2-1-2-0", note: "Carico aumentato rispetto ai giorni precedenti", v: 1, g: "crunch-zav" }
+          { name: "Hanging leg raise", sets: 4, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Quattro serie nella giornata lunga", v: 1, g: "hlr" },
+          { name: "Sit-up zavorrato a terra", sets: 3, reps: "15", load: "disco 15 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Piedi bloccati, eccentrica 3 sec", v: 1, g: "situp-floor" }
         ] }
       ]
     },
     {
       id: 7,
-      label: "D7",
-      title: "V DAY BRUTAL",
-      sub: "Addome dominante \xB7 braccia scariche",
-      area: "V CORE",
-      dur: 45,
-      int: 0,
-      blocks: [
-        { i: "\u{1F53B}", n: "BLOCCO A \u2014 ADDOME BASSO", ex: [
-          { name: "Hanging leg raise zavorrato", sets: 4, reps: "15", load: "5 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Con carico. Il giorno pi\xF9 duro per l'addome basso", v: 1, g: "hlr" },
-          { name: "Reverse crunch zavorrato", sets: 4, reps: "20", load: "10 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Bacino che si stacca sempre", v: 1, g: "rev-crunch" },
-          { name: "V-ups", sets: 3, reps: "15", load: "BW", rest: "40 sec", tempo: "2-0-2-0", note: "Gambe dritte, tocca i piedi in alto", v: 1, g: "vups" }
-        ] },
-        { i: "\u{1F53B}", n: "BLOCCO B \u2014 RETTO + OBLIQUI", ex: [
-          { name: "Crunch zavorrato", sets: 4, reps: "25", load: "disco 20 kg", rest: "45 sec", tempo: "2-0-2-0", note: "25 rep per serie con carico alto", v: 1, g: "crunch-zav" },
-          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo, eccentrica 3 sec", v: 1, g: "situp-decl" },
-          { name: "Russian twist zavorrato", sets: 3, reps: "25/lato", load: "disco 10 kg", rest: "40 sec", tempo: "2-0-2-0", note: "25 per lato. Obliqui in fiamme", v: 1, g: "russian" }
-        ] },
-        { i: "\u{1F53B}", n: "BLOCCO C \u2014 ISOMETRIA", ex: [
-          { name: "Plank", sets: 3, reps: "60 sec", load: "disco 10 kg sulla schiena", rest: "45 sec", tempo: "isometria", note: "Con carico. Corpo dritto, glutei stretti", v: 1, g: "plank" },
-          { name: "Ab wheel", sets: 3, reps: "12", load: "BW", rest: "60 sec", tempo: "3-0-1-0", note: "Schiena neutra, eccentrica controllata", v: 1, g: "ab-wheel" }
-        ] },
-        { t: "fin", i: "\u{1F480}", n: "AB FINISHER \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri", list: ["Crunch \xD725", "Reverse crunch \xD720", "Hanging knee raise \xD715", "Plank \xD745 sec"] }
-      ]
-    },
-    {
-      id: 8,
-      label: "D8",
-      title: "PETTO + PULL UP 2",
-      sub: "Ultimo giorno pesante",
-      area: "CHEST + BACK",
-      dur: 45,
+      label: "G7",
+      title: "ARMS BLAST + V",
+      sub: "Sessione lunga 70 min \xB7 giant set e addome brutale",
+      area: "LONG DAY",
+      dur: 70,
       int: 1,
       blocks: [
-        { i: "\u{1F3CB}\uFE0F", n: "PETTO", ex: [
-          { name: "Panca piana bilanciere", sets: 4, reps: "8", load: "25 kg/lato", rest: "90 sec", tempo: "3-1-1-0", note: "Ultimo giorno pesante di petto. Dai tutto", g: "panca-piana" },
-          { name: "Panca inclinata manubri", sets: 3, reps: "12", load: "20 kg cad.", rest: "75 sec", tempo: "3-1-1-0", note: "Parte alta del petto", g: "panca-incl" }
+        { i: "\u{1F525}", n: "GIANT SET BRACCIA \xD74 GIRI", ss: "\u26A1 4 esercizi consecutivi ZERO pause. 90 sec di recupero solo a fine giro", ex: [
+          { name: "Curl manubri alternati", sets: 4, reps: "12/braccio", load: "12 kg cad.", rest: "\u2014", tempo: "2-0-1-0", note: "Apre il giro", a: 1, ss: 1, x: 1, g: "curl-alt" },
+          { name: "Floor press presa stretta", sets: 4, reps: "12", load: "20 kg/lato", rest: "\u2014", tempo: "2-1-1-0", note: "Subito dopo. Gomiti che toccano terra", a: 1, ss: 1, x: 1, g: "floor-press" },
+          { name: "Hammer curl", sets: 4, reps: "12", load: "12 kg cad.", rest: "\u2014", tempo: "2-0-1-0", note: "Presa neutra, brachiale", a: 1, ss: 1, x: 1, g: "hammer" },
+          { name: "Push-up diamante", sets: 4, reps: "AMRAP", load: "BW", rest: "90 sec", tempo: "2-0-1-0", note: "Chiude il giro a cedimento. 90 sec, poi ricominci", a: 1, ss: 1, x: 1, g: "diamond" }
         ] },
-        { i: "\u{1F519}", n: "DORSALI", ex: [
-          { name: "Pull-up presa prona", sets: 4, reps: "AMRAP", load: "BW (o elastico)", rest: "90 sec", tempo: "2-1-3-0", note: "Secondo giorno di pull-up. Prova a battere le rep totali del D2", g: "pullup" }
+        { i: "\u{1F4AA}", n: "FINISHER BRACCIA", ex: [
+          { name: "21s bicipiti", sets: 3, reps: "21", load: "17,5 kg EZ", rest: "90 sec", tempo: "fluido", note: "7 basse + 7 alte + 7 complete. Il bruciore ti far\xE0 mollare: non farlo", a: 1, x: 1, g: "21s" },
+          { name: "Concentration curl", sets: 3, reps: "15/braccio", load: "8 kg", rest: "45 sec", tempo: "2-1-1-0", note: "Picco di contrazione, gomito fermo sulla coscia", a: 1, g: "conc" },
+          { name: "Overhead extension manubrio", sets: 3, reps: "15", load: "14 kg", rest: "60 sec", tempo: "3-0-1-0", note: "Ultimo stretch del capo lungo della settimana", a: 1, g: "ohe-man" }
         ] },
-        { i: "\u{1F4AA}", n: "BRACCIA", ex: [
-          { name: "Curl bilanciere", sets: 3, reps: "12", load: "25 kg", rest: "60 sec", tempo: "2-1-2-0", note: "Rep pi\xF9 alte, recuperi corti: siamo all'ottavo giorno", a: 1, g: "curl-bil" },
-          { name: "Skull crusher EZ", sets: 3, reps: "12", load: "14 kg EZ", rest: "60 sec", tempo: "3-0-1-0", note: "Gomiti fermi", a: 1, g: "skull" },
-          { name: "Kickback manubrio", sets: 2, reps: "20/braccio", load: "6 kg", rest: "45 sec", tempo: "2-1-1-0", note: "Chiusura metabolica", a: 1, g: "kickback" }
+        { i: "\u{1F53B}", n: "V CORE BRUTAL", ex: [
+          { name: "Hanging leg raise zavorrato", sets: 5, reps: "15", load: "5 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Con carico. Cinque serie, il giorno pi\xF9 duro per l'addome basso", v: 1, g: "hlr" },
+          { name: "Reverse crunch zavorrato", sets: 4, reps: "20", load: "10 kg tra i piedi", rest: "45 sec", tempo: "2-1-2-0", note: "Bacino che si stacca sempre", v: 1, g: "rev-crunch" },
+          { name: "Crunch zavorrato", sets: 4, reps: "25", load: "disco 20 kg", rest: "45 sec", tempo: "2-0-2-0", note: "25 rep per serie con carico alto", v: 1, g: "crunch-zav" },
+          { name: "Russian twist zavorrato", sets: 3, reps: "25/lato", load: "disco 10 kg", rest: "40 sec", tempo: "2-0-2-0", note: "25 per lato. Obliqui in fiamme", v: 1, g: "russian" },
+          { name: "Plank", sets: 3, reps: "60 sec", load: "disco 10 kg sulla schiena", rest: "45 sec", tempo: "isometria", note: "Con carico. Corpo dritto, glutei stretti", v: 1, g: "plank" }
         ] },
-        { i: "\u{1F53B}", n: "V CORE", ex: [
-          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "45 sec", tempo: "2-1-2-0", note: "Costante fino alla fine", v: 1, g: "hlr" },
-          { name: "Sit-up zavorrato su panca declinata", sets: 3, reps: "15", load: "disco 20 kg", rest: "45 sec", tempo: "2-1-3-0", note: "Range completo", v: 1, g: "situp-decl" }
-        ] }
-      ]
-    },
-    {
-      id: 9,
-      label: "D9",
-      title: "FINAL PUMP",
-      sub: "Chiusura \xB7 tutto leggero e gonfio",
-      area: "FINALE",
-      dur: 45,
-      int: 0,
-      blocks: [
-        { i: "\u{1F4AA}", n: "BRACCIA \u2014 PUMP MASSIMO", ss: "\u26A1 SUPERSET \u2014 Curl manubri \u2192 French press, 4 giri con 45 sec di recupero", ex: [
-          { name: "Curl manubri", sets: 4, reps: "20", load: "8 kg cad.", rest: "\u2014", tempo: "2-0-2-0", note: "20 rep leggere. Ultimo giorno: cerchi solo sangue nel muscolo", a: 1, ss: 1, g: "curl-man" },
-          { name: "French press EZ", sets: 4, reps: "20", load: "10 kg EZ", rest: "45 sec", tempo: "2-0-2-0", note: "20 rep. Il braccio deve sembrare esploso", a: 1, ss: 1, g: "french-ez" },
-          { name: "Hammer curl", sets: 3, reps: "20", load: "8 kg cad.", rest: "45 sec", tempo: "2-0-2-0", note: "Ancora 20 rep, carico leggero", a: 1, g: "hammer" }
-        ] },
-        { i: "\u{1F3CB}\uFE0F", n: "PETTO \u2014 PUMP", ex: [
-          { name: "Panca manubri piana", sets: 3, reps: "15", load: "16 kg cad.", rest: "45 sec", tempo: "2-1-2-0", note: "Leggero, alte rep, recuperi corti", g: "panca-man" },
-          { name: "Croci manubri", sets: 3, reps: "20", load: "8 kg cad.", rest: "45 sec", tempo: "2-1-1-0", note: "20 rep. Stretch e contrazione, il petto si riempie", g: "croci" },
-          { name: "Push-up", sets: 2, reps: "AMRAP", load: "BW", rest: "45 sec", tempo: "2-0-1-0", note: "Ultimo cedimento della hell week", g: "pushup" }
-        ] },
-        { i: "\u{1F53B}", n: "V CORE \u2014 FINALE", ex: [
-          { name: "Hanging leg raise", sets: 3, reps: "15", load: "BW", rest: "40 sec", tempo: "2-1-2-0", note: "Nono giorno consecutivo di addome. Chiudi bene", v: 1, g: "hlr" },
-          { name: "Crunch zavorrato", sets: 3, reps: "25", load: "disco 15 kg", rest: "40 sec", tempo: "2-0-2-0", note: "25 rep, carico ridotto. Bruciore finale", v: 1, g: "crunch-zav" }
-        ] },
-        { t: "fin", i: "\u{1F3C1}", n: "HELL WEEK FINISHER \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri \xB7 l'ultima fatica", list: ["Push-up \xD720", "Curl manubri \xD720", "Crunch \xD725", "Plank \xD760 sec"] }
+        { t: "fin", i: "\u{1F3C1}", n: "FINAL BURN \xD73 GIRI", note: "0 sec tra esercizi \xB7 60 sec tra i giri \xB7 chiude la settimana", list: ["Crunch \xD725", "Reverse crunch \xD720", "Hanging knee raise \xD715", "Plank \xD760 sec"] }
       ]
     }
   ];
@@ -603,7 +557,7 @@
       const s = dayStats(d);
       return s.tot > 0 && s.comp === s.tot;
     }).length;
-    return /* @__PURE__ */ React.createElement("div", { style: { background: BG, minHeight: "100vh", maxWidth: 480, margin: "0 auto", paddingBottom: t.end !== null ? 110 : 0 } }, /* @__PURE__ */ React.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap", rel: "stylesheet" }), /* @__PURE__ */ React.createElement("div", { style: { padding: "26px 20px 6px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: RED, letterSpacing: "0.18em", marginBottom: 8 } }, "/ 9 GIORNI \xB7 NO STOP"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 62, color: WHITE, lineHeight: 0.85, fontStyle: "italic", marginBottom: 10 } }, "HELL", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: VOLT } }, "WEEK.")), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" } }, "Braccia \xB7 Petto \xB7 V \u2014 obiettivo pump")), /* @__PURE__ */ React.createElement("div", { style: { padding: "20px 20px 0" } }, /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Hell week"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 26, color: daysDone === 9 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, daysDone, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/9 giorni"))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 4 } }, days.map((d, i) => {
+    return /* @__PURE__ */ React.createElement("div", { style: { background: BG, minHeight: "100vh", maxWidth: 480, margin: "0 auto", paddingBottom: t.end !== null ? 110 : 0 } }, /* @__PURE__ */ React.createElement("link", { href: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap", rel: "stylesheet" }), /* @__PURE__ */ React.createElement("div", { style: { padding: "26px 20px 6px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: RED, letterSpacing: "0.18em", marginBottom: 8 } }, "/ 7 GIORNI \xB7 SETTIMANA COMPLETA"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 62, color: WHITE, lineHeight: 0.85, fontStyle: "italic", marginBottom: 10 } }, "HELL", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("span", { style: { color: VOLT } }, "WEEK.")), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, color: MUTED, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" } }, "Braccia \xB7 Petto \xB7 V \u2014 obiettivo pump")), /* @__PURE__ */ React.createElement("div", { style: { padding: "20px 20px 0" } }, /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Hell week"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 26, color: daysDone === 9 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, daysDone, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/7 giorni"))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 4 } }, days.map((d, i) => {
       const s = dayStats(d);
       const full = s.tot > 0 && s.comp === s.tot;
       const part = s.comp > 0 && !full;
@@ -628,12 +582,10 @@
       cursor: "pointer",
       letterSpacing: "0.06em",
       textTransform: "uppercase"
-    } }, d.label))), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 24px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 14, marginBottom: 6 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 68, color: VOLT, lineHeight: 0.85, fontStyle: "italic" } }, "0", day.id), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: MUTED, letterSpacing: "0.15em", textTransform: "uppercase", transform: "translateY(-10px)" } }, "/ ", day.area)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 38, color: WHITE, lineHeight: 0.9, fontStyle: "italic", marginBottom: 6 } }, day.title), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: MUTED, fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 14 } }, day.sub), /* @__PURE__ */ React.createElement("div", { style: { display: "inline-block", background: day.int ? `${RED}18` : `${VOLT}15`, border: `1px solid ${day.int ? RED : VOLT}40`, borderRadius: 4, padding: "5px 10px", marginBottom: 14 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: day.int ? RED : VOLT, letterSpacing: "0.1em", textTransform: "uppercase" } }, day.int ? "\u{1F525} Giornata pesante" : "\u{1F4A8} Giornata pump")), /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Progresso \xB7 ~", day.dur, " min"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 24, color: pct === 100 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, completed, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/", total))), /* @__PURE__ */ React.createElement("div", { style: { height: 6, background: "#252525", borderRadius: 3, overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${pct}%`, height: "100%", background: VOLT, transition: "width 0.3s" } })), completed > 0 && /* @__PURE__ */ React.createElement("button", { onClick: () => resetDay(day.id), style: { marginTop: 10, background: "transparent", border: `1px solid ${DIM}`, color: MUTED, borderRadius: 4, padding: "6px 12px", fontFamily: BODY, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer" } }, "Azzera giorno"))), active === 0 && /* @__PURE__ */ React.createElement("div", { style: { margin: "0 20px 18px", padding: "12px 14px", background: `${RED}12`, borderLeft: `2px solid ${RED}`, fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, /* @__PURE__ */ React.createElement("strong", { style: { color: RED } }, "\u26A0\uFE0F REGOLA DELLA HELL WEEK:"), " i giorni pesanti e i giorni pump si alternano apposta. Se in un giorno pump ti viene voglia di caricare, non farlo: \xE8 quello che ti permette di arrivare vivo al giorno 9."), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px" } }, day.blocks.map((b, i) => /* @__PURE__ */ React.createElement(Block, { key: i, b, dayId: day.id, bi: i, done, onToggle: toggleSet, onStart: (s) => start(s, "Recupero") }))), /* @__PURE__ */ React.createElement("div", { style: { padding: "16px 0 40px" } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 14px", display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { width: 24, height: 2, background: VOLT } }), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" } }, "Guida hell week")), /* @__PURE__ */ React.createElement(Card, { title: "LA ROTAZIONE", sub: "Perch\xE9 pesante e pump si alternano", open: true }, /* @__PURE__ */ React.createElement(Row, { l: "D1 \xB7 Braccia heavy", v: "\u{1F525}", d: "Carichi pieni su bicipiti e tricipiti" }), /* @__PURE__ */ React.createElement(Row, { l: "D2 \xB7 Petto heavy", v: "\u{1F525}", d: "Panca pesante. Braccia solo in superset leggero" }), /* @__PURE__ */ React.createElement(Row, { l: "D3 \xB7 V day", v: "\u{1F4A8}", d: "Addome brutale, braccia scariche a 20 rep" }), /* @__PURE__ */ React.createElement(Row, { l: "D4 \xB7 Braccia pump", v: "\u{1F4A8}", d: "Alte rep, recuperi corti, zero cedimento sui compound" }), /* @__PURE__ */ React.createElement(Row, { l: "D5 \xB7 Petto pump", v: "\u{1F4A8}", d: "Volume alto con carichi ridotti" }), /* @__PURE__ */ React.createElement(Row, { l: "D6 \xB7 Braccia heavy 2", v: "\u{1F525}", d: "Secondo giro pesante, carichi leggermente pi\xF9 alti del D1" }), /* @__PURE__ */ React.createElement(Row, { l: "D7 \xB7 V day brutal", v: "\u{1F4A8}", d: "Il giorno pi\xF9 duro per l'addome. Braccia a riposo" }), /* @__PURE__ */ React.createElement(Row, { l: "D8 \xB7 Petto + braccia", v: "\u{1F525}", d: "Ultimo giorno pesante. Dai tutto" }), /* @__PURE__ */ React.createElement(Row, { l: "D9 \xB7 Final pump", v: "\u{1F4A8}", d: "Tutto leggero, alte rep. Chiudi gonfio", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "COSA SERVE PER IL PUMP", sub: "Le leve che contano davvero" }, /* @__PURE__ */ React.createElement(Row, { l: "Recuperi corti", v: "40-60 sec", d: "Sui giorni pump non superarli mai. \xC8 la variabile che gonfia il muscolo pi\xF9 del carico." }), /* @__PURE__ */ React.createElement(Row, { l: "Rep alte", v: "15-20", d: "Nei giorni pump. Il sangue entra nel muscolo e ci resta." }), /* @__PURE__ */ React.createElement(Row, { l: "Acqua", v: "3 litri/die", d: "Disidratato non pompi. Il pump \xE8 letteralmente sangue e acqua nel muscolo." }), /* @__PURE__ */ React.createElement(Row, { l: "Carboidrati", d: "Non tagliarli in questi 9 giorni. Il glicogeno tira acqua nel muscolo: senza carbo il pump non arriva." }), /* @__PURE__ */ React.createElement(Row, { l: "Sale", d: "Non eliminarlo. Il sodio serve al trasporto di liquidi nelle cellule muscolari.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "SEGNALI DI ALLARME", sub: "Quando fermarti prima del giorno 9" }, /* @__PURE__ */ React.createElement(Row, { l: "Forza in calo su tutto", d: "Se per due giorni di fila cali su ogni esercizio, salta un giorno pump e riprendi." }), /* @__PURE__ */ React.createElement(Row, { l: "Dolore ai gomiti", d: "Con questo volume su curl e french press \xE8 il primo punto a cedere. Se compare, togli gli esercizi overhead." }), /* @__PURE__ */ React.createElement(Row, { l: "Sonno peggiorato", d: "Sistema nervoso saturo. \xC8 il segnale pi\xF9 affidabile." }), /* @__PURE__ */ React.createElement(Row, { l: "Achille", d: "Se il tendine si infiamma, non \xE8 colpa della scheda ma del volume generale: riduci il cammino e insisti sul protocollo.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "DOPO IL GIORNO 9", sub: "Non saltare questa parte" }, /* @__PURE__ */ React.createElement(Row, { l: "3 giorni di scarico", d: "Zero braccia, zero petto. Solo camminata leggera, cyclette e mobilit\xE0." }), /* @__PURE__ */ React.createElement(Row, { l: "Poi torna alla scheda base", d: "Rientri con carichi al 70-80% per la prima settimana, poi riparti normale." }), /* @__PURE__ */ React.createElement(Row, { l: "Aspettative reali", d: "In 9 giorni non costruisci massa nuova: costruisci pump, densit\xE0 e una base di volume che si trasforma in crescita nelle 2-3 settimane successive, se recuperi bene.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "PROTOCOLLO ACHILLE", sub: "Tutti i giorni \xB7 fuori dall'allenamento" }, /* @__PURE__ */ React.createElement("div", { style: { background: BG, borderLeft: `3px solid ${ORANGE}`, padding: "12px 14px", margin: "16px 0 10px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 16, color: ORANGE, textTransform: "uppercase", marginBottom: 5, fontStyle: "italic" } }, "\u26A0\uFE0F Regola del dolore"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, ACHILLE.warn)), ACHILLE.ex.map((e, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { background: BG, padding: "14px 16px", marginBottom: 2, borderLeft: `2px solid ${VOLT}` } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", gap: 10, marginBottom: 8 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 14, color: WHITE, fontWeight: 600, flex: 1 } }, e.n), /* @__PURE__ */ React.createElement(Pill, { kind: "v" }, e.s)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 13, color: MUTED, lineHeight: 1.6 } }, e.note))))), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", padding: "18px", fontFamily: BODY, fontSize: 10, fontWeight: 700, color: DIM, letterSpacing: "0.2em" } }, "/ 9 DAYS. NO EXCUSES."), /* @__PURE__ */ React.createElement(QuickTimer, { t, start }), /* @__PURE__ */ React.createElement(TimerBar, { t, toggle, add, stop }));
+    } }, d.label))), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 24px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "baseline", gap: 14, marginBottom: 6 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 68, color: VOLT, lineHeight: 0.85, fontStyle: "italic" } }, "0", day.id), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: MUTED, letterSpacing: "0.15em", textTransform: "uppercase", transform: "translateY(-10px)" } }, "/ ", day.area)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 38, color: WHITE, lineHeight: 0.9, fontStyle: "italic", marginBottom: 6 } }, day.title), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: MUTED, fontWeight: 600, letterSpacing: "0.04em", textTransform: "uppercase", marginBottom: 14 } }, day.sub), /* @__PURE__ */ React.createElement("div", { style: { display: "inline-block", background: day.int ? `${RED}18` : `${VOLT}15`, border: `1px solid ${day.int ? RED : VOLT}40`, borderRadius: 4, padding: "5px 10px", marginBottom: 14 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: day.int ? RED : VOLT, letterSpacing: "0.1em", textTransform: "uppercase" } }, day.int ? "\u{1F525} Giornata pesante" : "\u{1F4A8} Giornata pump")), /* @__PURE__ */ React.createElement("div", { style: { background: SURFACE, padding: "14px 16px" } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 8 } }, /* @__PURE__ */ React.createElement("span", { style: { fontFamily: BODY, fontSize: 10, fontWeight: 800, color: MUTED, letterSpacing: "0.12em", textTransform: "uppercase" } }, "Progresso \xB7 ~", day.dur, " min"), /* @__PURE__ */ React.createElement("span", { style: { fontFamily: DISPLAY, fontSize: 24, color: pct === 100 ? VOLT : WHITE, fontStyle: "italic", lineHeight: 1 } }, completed, /* @__PURE__ */ React.createElement("span", { style: { color: MUTED, fontSize: 16 } }, "/", total))), /* @__PURE__ */ React.createElement("div", { style: { height: 6, background: "#252525", borderRadius: 3, overflow: "hidden" } }, /* @__PURE__ */ React.createElement("div", { style: { width: `${pct}%`, height: "100%", background: VOLT, transition: "width 0.3s" } })), completed > 0 && /* @__PURE__ */ React.createElement("button", { onClick: () => resetDay(day.id), style: { marginTop: 10, background: "transparent", border: `1px solid ${DIM}`, color: MUTED, borderRadius: 4, padding: "6px 12px", fontFamily: BODY, fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", cursor: "pointer" } }, "Azzera giorno"))), active === 0 && /* @__PURE__ */ React.createElement("div", { style: { margin: "0 20px 18px", padding: "12px 14px", background: `${RED}12`, borderLeft: `2px solid ${RED}`, fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, /* @__PURE__ */ React.createElement("strong", { style: { color: RED } }, "\u26A0\uFE0F REGOLA DELLA HELL WEEK:"), " i giorni pesanti e i giorni pump si alternano apposta. Se in un giorno pump ti viene voglia di caricare, non farlo: \xE8 quello che ti permette di arrivare vivo al giorno 9."), /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px" } }, day.blocks.map((b, i) => /* @__PURE__ */ React.createElement(Block, { key: i, b, dayId: day.id, bi: i, done, onToggle: toggleSet, onStart: (s) => start(s, "Recupero") }))), /* @__PURE__ */ React.createElement("div", { style: { padding: "16px 0 40px" } }, /* @__PURE__ */ React.createElement("div", { style: { padding: "0 20px 14px", display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement("div", { style: { width: 24, height: 2, background: VOLT } }), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 11, fontWeight: 700, color: WHITE, letterSpacing: "0.15em", textTransform: "uppercase" } }, "Guida hell week")), /* @__PURE__ */ React.createElement(Card, { title: "LA SETTIMANA", sub: "Un focus al giorno, braccia e core ricorrenti", open: true }, /* @__PURE__ */ React.createElement(Row, { l: "G1 \xB7 Braccia heavy", v: "\u{1F525} 45 min", d: "Bicipiti e tricipiti a carico pieno" }), /* @__PURE__ */ React.createElement(Row, { l: "G2 \xB7 Petto + Pull up", v: "\u{1F525} 45 min", d: "Panca pesante e trazioni alla sbarra" }), /* @__PURE__ */ React.createElement(Row, { l: "G3 \xB7 V Day", v: "\u{1F4A8} 45 min", d: "Addome brutale, braccia solo in pump leggero" }), /* @__PURE__ */ React.createElement(Row, { l: "G4 \xB7 Gambe + Core", v: "\u{1F4A8} 45 min", d: "Solo leg extension e leg curl, anche monopodalici. Zero stress sull'Achille" }), /* @__PURE__ */ React.createElement(Row, { l: "G5 \xB7 Braccia pump", v: "\u{1F4A8} 45 min", d: "Alte rep e recuperi corti" }), /* @__PURE__ */ React.createElement(Row, { l: "G6 \xB7 Petto + Braccia", v: "\u{1F525} 68 min", d: "Sessione lunga. Se ti alleni lun-dom, questo cade di sabato" }), /* @__PURE__ */ React.createElement(Row, { l: "G7 \xB7 Arms blast + V", v: "\u{1F525} 70 min", d: "Sessione lunga. Se ti alleni lun-dom, questo cade di domenica", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "COSA SERVE PER IL PUMP", sub: "Le leve che contano davvero" }, /* @__PURE__ */ React.createElement(Row, { l: "Recuperi corti", v: "40-60 sec", d: "Sui giorni pump non superarli mai. \xC8 la variabile che gonfia il muscolo pi\xF9 del carico." }), /* @__PURE__ */ React.createElement(Row, { l: "Rep alte", v: "15-20", d: "Nei giorni pump. Il sangue entra nel muscolo e ci resta." }), /* @__PURE__ */ React.createElement(Row, { l: "Acqua", v: "3 litri/die", d: "Disidratato non pompi. Il pump \xE8 letteralmente sangue e acqua nel muscolo." }), /* @__PURE__ */ React.createElement(Row, { l: "Carboidrati", d: "Non tagliarli in questi 9 giorni. Il glicogeno tira acqua nel muscolo: senza carbo il pump non arriva." }), /* @__PURE__ */ React.createElement(Row, { l: "Sale", d: "Non eliminarlo. Il sodio serve al trasporto di liquidi nelle cellule muscolari.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "SEGNALI DI ALLARME", sub: "Quando fermarti prima del giorno 9" }, /* @__PURE__ */ React.createElement(Row, { l: "Forza in calo su tutto", d: "Se per due giorni di fila cali su ogni esercizio, salta un giorno pump e riprendi." }), /* @__PURE__ */ React.createElement(Row, { l: "Dolore ai gomiti", d: "Con questo volume su curl e french press \xE8 il primo punto a cedere. Se compare, togli gli esercizi overhead." }), /* @__PURE__ */ React.createElement(Row, { l: "Sonno peggiorato", d: "Sistema nervoso saturo. \xC8 il segnale pi\xF9 affidabile." }), /* @__PURE__ */ React.createElement(Row, { l: "Achille", d: "Se il tendine si infiamma, non \xE8 colpa della scheda ma del volume generale: riduci il cammino e insisti sul protocollo.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "DOPO IL GIORNO 9", sub: "Non saltare questa parte" }, /* @__PURE__ */ React.createElement(Row, { l: "3 giorni di scarico", d: "Zero braccia, zero petto. Solo camminata leggera, cyclette e mobilit\xE0." }), /* @__PURE__ */ React.createElement(Row, { l: "Poi torna alla scheda base", d: "Rientri con carichi al 70-80% per la prima settimana, poi riparti normale." }), /* @__PURE__ */ React.createElement(Row, { l: "Aspettative reali", d: "In 9 giorni non costruisci massa nuova: costruisci pump, densit\xE0 e una base di volume che si trasforma in crescita nelle 2-3 settimane successive, se recuperi bene.", last: true })), /* @__PURE__ */ React.createElement(Card, { title: "PROTOCOLLO ACHILLE", sub: "Tutti i giorni \xB7 fuori dall'allenamento" }, /* @__PURE__ */ React.createElement("div", { style: { background: BG, borderLeft: `3px solid ${ORANGE}`, padding: "12px 14px", margin: "16px 0 10px" } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: DISPLAY, fontSize: 16, color: ORANGE, textTransform: "uppercase", marginBottom: 5, fontStyle: "italic" } }, "\u26A0\uFE0F Regola del dolore"), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 12, color: WHITE, lineHeight: 1.6 } }, ACHILLE.warn)), ACHILLE.ex.map((e, i) => /* @__PURE__ */ React.createElement("div", { key: i, style: { background: BG, padding: "14px 16px", marginBottom: 2, borderLeft: `2px solid ${VOLT}` } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", gap: 10, marginBottom: 8 } }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 14, color: WHITE, fontWeight: 600, flex: 1 } }, e.n), /* @__PURE__ */ React.createElement(Pill, { kind: "v" }, e.s)), /* @__PURE__ */ React.createElement("div", { style: { fontFamily: BODY, fontSize: 13, color: MUTED, lineHeight: 1.6 } }, e.note))))), /* @__PURE__ */ React.createElement("div", { style: { textAlign: "center", padding: "18px", fontFamily: BODY, fontSize: 10, fontWeight: 700, color: DIM, letterSpacing: "0.2em" } }, "/ 7 DAYS. NO EXCUSES."), /* @__PURE__ */ React.createElement(QuickTimer, { t, start }), /* @__PURE__ */ React.createElement(TimerBar, { t, toggle, add, stop }));
   }
-  var root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(React.createElement(App));
+  ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App));
 })();
-
 </script>
 </body>
 </html>
